@@ -1,6 +1,7 @@
 package sqa.view.dangnhap;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import sqa.controller.DangNhapDAO;
 import sqa.view.dangky.DangKyFrm;
 import sqa.view.trangchu.TrangChuFrm;
@@ -21,30 +22,30 @@ public class DangNhapFrm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        dangNhapButton = new javax.swing.JButton();
+        dangKyButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        maKHTxt = new javax.swing.JTextField();
-        passwordTxt = new javax.swing.JPasswordField();
+        matKhauEditText = new javax.swing.JPasswordField();
+        maKhachHangEditText = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(828, 440));
 
-        jButton1.setText("Đăng nhập");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        dangNhapButton.setText("Đăng nhập");
+        dangNhapButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                dangNhapButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Đăng ký");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        dangKyButton.setText("Đăng ký");
+        dangKyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                dangKyButtonActionPerformed(evt);
             }
         });
 
@@ -54,15 +55,6 @@ public class DangNhapFrm extends javax.swing.JFrame {
         jLabel2.setText("Mã Khách Hàng:");
 
         jLabel3.setText("Mật Khẩu:");
-
-        maKHTxt.setText("GLT1800130");
-        maKHTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maKHTxtActionPerformed(evt);
-            }
-        });
-
-        passwordTxt.setText("123456");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -76,9 +68,9 @@ public class DangNhapFrm extends javax.swing.JFrame {
                 .addContainerGap(231, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(dangNhapButton)
                         .addGap(84, 84, 84)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dangKyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(243, 243, 243))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,8 +78,8 @@ public class DangNhapFrm extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(47, 47, 47)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(maKHTxt)
-                            .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(matKhauEditText, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                            .addComponent(maKhachHangEditText))
                         .addGap(175, 175, 175))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -98,15 +90,15 @@ public class DangNhapFrm extends javax.swing.JFrame {
                 .addGap(62, 62, 62)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(maKHTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(maKhachHangEditText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(matKhauEditText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(75, 75, 75)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(dangNhapButton)
+                    .addComponent(dangKyButton))
                 .addContainerGap(125, Short.MAX_VALUE))
         );
 
@@ -130,27 +122,23 @@ public class DangNhapFrm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void maKHTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maKHTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maKHTxtActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String maKH = maKHTxt.getText();
-        String password = new String(passwordTxt.getPassword());
+    private void dangNhapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dangNhapButtonActionPerformed
         DangNhapDAO dangNhapDAO = new DangNhapDAO();
+        String maKH = maKhachHangEditText.getText();
+        String password = new String(matKhauEditText.getPassword());
         if (dangNhapDAO.dangNhap(maKH, password)) {
             (new TrangChuFrm()).setVisible(true);
             this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Sai mã khách hàng hoặc mật khẩu");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_dangNhapButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    private void dangKyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dangKyButtonActionPerformed
         (new DangKyFrm()).setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
-    
+    }//GEN-LAST:event_dangKyButtonActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -159,13 +147,13 @@ public class DangNhapFrm extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton dangKyButton;
+    private javax.swing.JButton dangNhapButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField maKHTxt;
-    private javax.swing.JPasswordField passwordTxt;
+    private javax.swing.JTextField maKhachHangEditText;
+    private javax.swing.JPasswordField matKhauEditText;
     // End of variables declaration//GEN-END:variables
 }

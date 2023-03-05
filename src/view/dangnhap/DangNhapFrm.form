@@ -63,9 +63,9 @@
                   <EmptySpace pref="231" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="dangNhapButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="dangKyButton" min="-2" pref="120" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -75,8 +75,8 @@
                           </Group>
                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="maKHTxt" max="32767" attributes="0"/>
-                              <Component id="passwordTxt" min="-2" pref="267" max="-2" attributes="0"/>
+                              <Component id="matKhauEditText" pref="267" max="32767" attributes="0"/>
+                              <Component id="maKhachHangEditText" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
                       </Group>
@@ -92,17 +92,17 @@
                   <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="maKHTxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="maKhachHangEditText" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="passwordTxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="matKhauEditText" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dangNhapButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dangKyButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="125" max="32767" attributes="0"/>
               </Group>
@@ -110,20 +110,20 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="dangNhapButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng nh&#x1ead;p"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dangNhapButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="dangKyButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng k&#xfd;"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dangKyButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
@@ -144,18 +144,9 @@
             <Property name="text" type="java.lang.String" value="M&#x1ead;t Kh&#x1ea9;u:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="maKHTxt">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="GLT1800130"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="maKHTxtActionPerformed"/>
-          </Events>
+        <Component class="javax.swing.JPasswordField" name="matKhauEditText">
         </Component>
-        <Component class="javax.swing.JPasswordField" name="passwordTxt">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="123456"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="maKhachHangEditText">
         </Component>
       </SubComponents>
     </Container>
