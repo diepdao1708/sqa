@@ -1,9 +1,10 @@
 package view.register;
 
+import controller.Const;
 import controller.RegisterDAO;
+import controller.RegisterData;
 import java.awt.Color;
 import javax.swing.JOptionPane;
-import model.User;
 import view.login.LoginFrm;
 
 public class RegisterFrm extends javax.swing.JFrame {
@@ -16,7 +17,7 @@ public class RegisterFrm extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         getContentPane().setBackground(Color.white);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -74,42 +75,45 @@ public class RegisterFrm extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(371, 371, 371))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(171, 171, 171)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(note, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(47, 47, 47)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cccdEditText)
-                            .addComponent(passwordEditText)
-                            .addComponent(accountCodeEditText)
-                            .addComponent(confirmPasswordEditText, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
+                        .addContainerGap()
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(68, 68, 68)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(note, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel2))
+                                        .addGap(47, 47, 47)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(cccdEditText)
+                                            .addComponent(passwordEditText)
+                                            .addComponent(accountCodeEditText)
+                                            .addComponent(confirmPasswordEditText, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(175, 175, 175)
+                                .addComponent(jLabel1))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(258, 258, 258)
                         .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(backButton)))
-                .addGap(35, 35, 35)
+                .addGap(16, 16, 16)
+                .addComponent(backButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(accountCodeEditText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -127,9 +131,9 @@ public class RegisterFrm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cccdEditText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(39, 39, 39)
+                .addGap(46, 46, 46)
                 .addComponent(registerButton)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addGap(0, 79, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,40 +163,31 @@ public class RegisterFrm extends javax.swing.JFrame {
         String confirmPassword = new String(confirmPasswordEditText.getPassword());
         String cccd = cccdEditText.getText();
 
-        // check mat khau
-        if (!registerDAO.checkPassword(password)) {
-            note.setForeground(Color.red);
-            JOptionPane.showMessageDialog(this, "Nhập lại mật khẩu");
-            return;
-        } else {
-            note.setForeground(Color.black);
-        }
+        RegisterData registerData = registerDAO.register(accountCode, cccd, password, confirmPassword);
 
-        // xac nhan mat khau
-        if (!registerDAO.confirmPassword(password, confirmPassword)) {
-            JOptionPane.showMessageDialog(this, "Mật khẩu không khớp");
-            return;
-        }
-
-        // check khach hang
-        if (!registerDAO.checkCustomer(accountCode, cccd)) {
-            JOptionPane.showMessageDialog(this, "Sai mã khách hàng hoặc cccd");
-            return;
-        }
-
-        // ton tai tai khoan
-        if (registerDAO.accountExist(accountCode)) {
-            JOptionPane.showMessageDialog(this, "Mã khách hàng đã có tài khoản");
-            return;
-        }
-
-        // dang ky
-        User user = new User(accountCode, password, "user");
-        if (registerDAO.register(user)) {
+        if (registerData.getStatus() == 200) {
             (new LoginFrm()).setVisible(true);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "Đăng ký thất bại");
+            if (registerData.getMessage().equals(Const.account_code_empty)
+                    || registerData.getMessage().equals(Const.exist_account)
+                    || registerData.getMessage().equals(Const.register_failure)
+                    || registerData.getMessage().equals(Const.not_exist_customer_code)) {
+                accountCodeEditText.requestFocus();
+            }
+            if (registerData.getMessage().equals(Const.password_empty)
+                    || registerData.getMessage().equals(Const.password_not_matching)) {
+                passwordEditText.requestFocus();
+            }
+            if (registerData.getMessage().equals(Const.confirm_password_empty)) {
+                confirmPasswordEditText.requestFocus();
+            }
+            if (registerData.getMessage().equals(Const.cccd_empty)) {
+                cccdEditText.requestFocus();
+            }
+            note.setForeground(registerData.getMessage().equals(Const.format_password) ? Color.red : Color.black);
+
+            JOptionPane.showMessageDialog(this, registerData.getMessage());
         }
     }//GEN-LAST:event_registerButtonActionPerformed
 
@@ -200,14 +195,6 @@ public class RegisterFrm extends javax.swing.JFrame {
         (new LoginFrm()).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backButtonActionPerformed
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegisterFrm().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField accountCodeEditText;

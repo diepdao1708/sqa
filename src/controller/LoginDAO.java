@@ -16,7 +16,6 @@ public class LoginDAO extends DAO {
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                System.out.println("login -> true");
                 return rs.getString("role");
             }
         } catch (SQLException e) {

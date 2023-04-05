@@ -3,69 +3,70 @@ package controller;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import model.User;
 
 public class RegisterDAO extends DAO {
 
     public RegisterDAO() {
     }
 
-    public boolean register(User user) {
+    private RegisterData checkRegister(String password, String accountCode) {
         try {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO user(account_code,password,role) VALUES(?,?,?)", Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, user.getAccountCode());
-            ps.setString(2, user.getPassword());
-            ps.setString(3, user.getRole());
+            PreparedStatement ps = con.prepareStatement("UPDATE user SET password = ? where account_code = ?");
+            ps.setString(1, password);
+            ps.setString(2, accountCode);
 
             ps.executeUpdate();
-            System.out.println("register -> true");
-            return true;
+            return new RegisterData(200, Const.register_sussess);
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return false;
+        return new RegisterData(500, Const.register_failure);
     }
 
-    public boolean checkCustomer(String accountCode, String cccd) {
+    public RegisterData register(String accountCode, String cccd, String password, String confirmPassword) {
+        if (accountCode.isEmpty()) {
+            return new RegisterData(500, Const.account_code_empty);
+        }
+        if (password.isEmpty()) {
+            return new RegisterData(500, Const.password_empty);
+        }
+        if (!checkPassword(password)) {
+            return new RegisterData(500, Const.format_password);
+        }
+        if (confirmPassword.isEmpty()) {
+            return new RegisterData(500, Const.confirm_password_empty);
+        }
+        if (!confirmPassword(password, confirmPassword)) {
+            return new RegisterData(500, Const.password_not_matching);
+        }
+        if (cccd.isEmpty()) {
+            return new RegisterData(500, Const.cccd_empty);
+        }
+
         try {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM customer WHERE account_code = ? AND cccd = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM user WHERE account_code = ? AND cccd = ?");
             ps.setString(1, accountCode);
             ps.setString(2, cccd);
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                System.out.println("checkCustomer -> true");
-                return true;
+                if (rs.getString("password") != null) {
+                    return new RegisterData(500, Const.exist_account);
+                }
+                return checkRegister(password, accountCode);
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return false;
+        return new RegisterData(500, Const.not_exist_customer_code);
     }
 
-    public boolean checkPassword(String password) {
+    private boolean confirmPassword(String password, String confirmPassword) {
+        return password.equals(confirmPassword);
+    }
+
+    private boolean checkPassword(String password) {
         String regex = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}";
         return password.matches(regex);
-    }
-
-    public boolean accountExist(String accountCode) {
-        try {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM user WHERE account_code = ?");
-            ps.setString(1, accountCode);
-
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                System.out.println("accountExist -> true");
-                return true;
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-        return false;
-    }
-
-    public boolean confirmPassword(String password, String confirmPassword) {
-        return password.equals(confirmPassword);
     }
 }
