@@ -12,9 +12,9 @@ public class DAO {
         if (con == null) {
             try {
                 // url - username - password of mySQL
-                Class.forName("com.mysql.jdbc.Driver");
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sqa?useSSL=false", "root", "password");
-            } catch (SQLException | ClassNotFoundException ex) {
+//                Class.forName("com.mysql.jdbc.Driver");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sql_main", "root", "123456");
+            } catch (SQLException ex) {
                 System.out.println(ex);
             }
         }
