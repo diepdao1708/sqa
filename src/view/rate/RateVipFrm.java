@@ -2,50 +2,41 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view.home;
+package view.rate;
 
-import controller.BillDAO;
-import java.awt.Color;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import controller.CustomerDAO;
-import controller.MeterDAO;
 import controller.RateDAO;
-import controller.ReadingDAO;
-import model.Bill;
+import java.awt.Color;
 import model.Customer;
-import model.Meter;
 import model.Rate;
-import model.Reading;
 import view.bill.BillFrm;
 
 /**
  *
  * @author Admin
  */
-public class HomeFrm extends javax.swing.JFrame {
-    private String role;
+public class RateVipFrm extends javax.swing.JFrame {
+    private int customer_id;
     
     CustomerDAO customerDAO = new CustomerDAO();
-    MeterDAO meterDAO = new MeterDAO();
-    ReadingDAO readingDAO = new ReadingDAO();
     RateDAO rateDAO = new RateDAO();
-    BillDAO billDAO = new BillDAO();
     /**
-     * Creates new form TrangChuFrm
+     * Creates new form BangGiaVipFrm
      */
-    public HomeFrm(String role) {
-        this.role = role;
+    public RateVipFrm(int customer_id) {
+        this.customer_id = customer_id;
         initComponents();
         
-        setTitle("Trang Chủ");
-        setSize(830, 450);
+        setTitle("Bảng Giá");
+        setSize(830,500);
         setLocationRelativeTo(this);
         getContentPane().setBackground(Color.white);
-    }
-    
-    public HomeFrm() {
         
+        Customer customer = customerDAO.customerInfo(customer_id);
+        Rate rate = rateDAO.rateInfo(customer.getRate_id());
+        
+        jTextField1.setText(Integer.toString(rate.getPrice_first()));
+        jTextField1.setHorizontalAlignment(jTextField1.RIGHT);
     }
 
     /**
@@ -59,14 +50,23 @@ public class HomeFrm extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Trang Chủ");
+        jPanel1.setPreferredSize(new java.awt.Dimension(830, 500));
 
-        jButton1.setText("Hóa đơn nước");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setText("Bảng giá");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setText("Giá bán nước (đồng/m3):");
+
+        jTextField1.setEditable(false);
+
+        jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -80,32 +80,45 @@ public class HomeFrm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(328, 328, 328)
+                        .addGap(334, 334, 334)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(346, 346, 346)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(339, Short.MAX_VALUE))
+                        .addGap(135, 135, 135)
+                        .addComponent(jLabel2)
+                        .addGap(97, 97, 97)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addGap(60, 60, 60)
+                .addGap(128, 128, 128)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(294, Short.MAX_VALUE))
+                .addGap(71, 71, 71))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -113,38 +126,16 @@ public class HomeFrm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        //Lấy tháng - năm hiện tại
-        Date date = new Date(System.currentTimeMillis());
-        String date_format = new SimpleDateFormat("yyyy-MM-dd").format(date);
-        int month = Integer.parseInt(date_format.split("-")[1]);
-        int year = Integer.parseInt(date_format.split("-")[0]);
-        
-        // Lấy thông tin 
-        Customer customer = customerDAO.customerInfo(1);
-        Meter meter = meterDAO.meterInfo(customer.getCustomer_id());
-        Reading reading = readingDAO.readingInfo(meter.getMeter_id(), month, year);
-        Rate rate = rateDAO.rateInfo(customer.getRate_id());
-        Bill bill = billDAO.billInfo(1, month, year);
-        
-        //Lưu hóa đơn nếu cần
-        if(reading != null && bill == null) {
-            Reading previous_reading = null;
-            if(month != 1) {
-                previous_reading = readingDAO.readingInfo(meter.getMeter_id(), month - 1, year);
-            }
-            else previous_reading = readingDAO.readingInfo(meter.getMeter_id(), month - 1, year - 1);
-            billDAO.saveBill(1, month, year, reading.getReading(), previous_reading.getReading(), customer.getType(), rate);
-        }
-        
-        //
-        BillFrm ttf = new BillFrm(customer.getCustomer_id());
-        ttf.setVisible(true);
+        BillFrm bfrm = new BillFrm(customer_id);
+        bfrm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
