@@ -30,10 +30,9 @@ public class MeterDAO {
 
             while(rs.next()) {
                 int meter_id = rs.getInt("meter_id");
-                String customer = rs.getString("customer_id");
                 String serial_number = rs.getString("serial_number");
                 boolean status = rs.getBoolean("status");
-                meter = new Meter(meter_id, customer, serial_number, status);
+                meter = new Meter(meter_id, customer_id, serial_number, status);
                 return meter;
             }
         } catch(SQLException ex) {
