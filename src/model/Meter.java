@@ -3,11 +3,11 @@ package model;
 
 public class Meter {
     private int meter_id;
-    private String customer_id;
+    private int customer_id;
     private String serial_number;
     private boolean status;
 
-    public Meter(int meter_id, String customer_id, String serial_number, boolean status) {
+    public Meter(int meter_id, int customer_id, String serial_number, boolean status) {
         this.meter_id = meter_id;
         this.customer_id = customer_id;
         this.serial_number = serial_number;
@@ -18,7 +18,7 @@ public class Meter {
         return meter_id;
     }
 
-    public String getCustomer_id() {
+    public int getCustomer_id() {
         return customer_id;
     }
 
