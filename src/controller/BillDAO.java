@@ -4,7 +4,6 @@
  */
 package controller;
 
-import static controller.DAO.con;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +14,7 @@ import model.Rate;
  *
  * @author Admin
  */
-public class BillDAO {
+public class BillDAO extends DAO {
     public BillDAO() {
         
     }
