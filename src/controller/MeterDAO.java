@@ -4,7 +4,6 @@
  */
 package controller;
 
-import static controller.DAO.con;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +13,7 @@ import model.Meter;
  *
  * @author Admin
  */
-public class MeterDAO {
+public class MeterDAO extends DAO {
     public MeterDAO() {
         
     }
