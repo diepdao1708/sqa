@@ -8,12 +8,17 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import model.Reading;
 
 /**
  *
  * @author Admin
  */
+
 public class ReadingDAO extends DAO {
     public ReadingDAO() {
         
@@ -42,4 +47,64 @@ public class ReadingDAO extends DAO {
         
         return water_reading;
     }
+    
+    public List<Reading> getReadingByMeterId(int meter_id){
+        List<Reading> list = new ArrayList<>();
+        String sql = "select * from Reading where meter_id = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, meter_id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Reading reading = new Reading();
+                reading.setReading_id(rs.getInt("reading_id"));
+                reading.setMonth(rs.getInt("month"));
+                reading.setYear(rs.getInt("year"));
+                reading.setReading(rs.getInt("reading"));
+                reading.setCreated_date(rs.getDate("created_date"));
+                reading.setMeter_id(rs.getInt("meter_id"));
+                list.add(reading);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
+    public Reading getNearestReading(int meter_id){
+        String sql = "select * from reading where meter_id = ? order by created_date desc limit 1";
+        Reading read = new Reading();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, meter_id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                read.setMeter_id(rs.getInt("meter_id"));
+                read.setCreated_date(rs.getDate("created_date"));
+                read.setReading(rs.getInt("reading"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return read;
+    }
+    
+     public int insertReading(Reading reading){
+        String sql = "insert into reading(month, year, reading, created_date, meter_id) values(?, ?, ?, ?, ?);";
+        int row = 0;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, reading.getMonth());
+            ps.setInt(2, reading.getYear());
+            ps.setInt(3, reading.getReading());
+            java.sql.Date date = new java.sql.Date(reading.getCreated_date().getTime());
+            ps.setDate(4, date);
+            ps.setInt(5, reading.getMeter_id());
+            row = ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return row;
+    }
+    
 }

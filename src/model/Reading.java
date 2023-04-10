@@ -18,6 +18,9 @@ public class Reading {
     private int reading;
     private Date created_date;
 
+    public Reading() {
+    }
+
     public Reading(int reading_id, int meter_id, int month, int year, int reading, Date created_date) {
         this.reading_id = reading_id;
         this.meter_id = meter_id;
