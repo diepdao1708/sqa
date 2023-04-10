@@ -4,7 +4,6 @@
  */
 package controller;
 
-import static controller.DAO.con;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +16,8 @@ import model.User;
  *
  * @author Admin
  */
-public class MeterDAO extends DAO{
+
+public class MeterDAO extends DAO {
     public MeterDAO() {
         
     }
@@ -36,7 +36,7 @@ public class MeterDAO extends DAO{
                 int customer = rs.getInt("customer_id");
                 String serial_number = rs.getString("serial_number");
                 boolean status = rs.getBoolean("status");
-                meter = new Meter(meter_id, customer, serial_number, status);
+                meter = new Meter(meter_id, customer_id, serial_number, status);
                 return meter;
             }
         } catch(SQLException ex) {

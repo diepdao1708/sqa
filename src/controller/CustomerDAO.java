@@ -4,7 +4,6 @@
  */
 package controller;
 
-import static controller.DAO.con;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +13,7 @@ import model.Customer;
  *
  * @author Admin
  */
-public class CustomerDAO {
+public class CustomerDAO extends DAO {
     public CustomerDAO() {
         
     }

@@ -7,9 +7,11 @@ public class Meter {
     private String serial_number;
     private boolean status;
 
+
     public Meter() {
         
     }
+
 
     public Meter(int meter_id, int customer_id, String serial_number, boolean status) {
         this.meter_id = meter_id;
@@ -27,6 +29,7 @@ public class Meter {
     public void setMeter_id(int meter_id) {
         this.meter_id = meter_id;
     }
+
 
     public int getCustomer_id() {
         return customer_id;

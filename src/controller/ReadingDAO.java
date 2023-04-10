@@ -4,7 +4,6 @@
  */
 package controller;
 
-import static controller.DAO.con;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +18,8 @@ import model.Reading;
  *
  * @author Admin
  */
-public class ReadingDAO extends DAO{
+
+public class ReadingDAO extends DAO {
     public ReadingDAO() {
         
     }
