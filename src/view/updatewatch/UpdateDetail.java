@@ -323,6 +323,9 @@ public class UpdateDetail extends javax.swing.JFrame {
     }//GEN-LAST:event_updateBTNMouseClicked
 
     private int check(Reading nearestReading, Reading nowReading) {
+        if(nearestReading.getReading_id()==0){
+            return 0;
+        }
         Long diff = nowReading.getCreated_date().getTime() - nearestReading.getCreated_date().getTime();
         int count = (int) (TimeUnit.MILLISECONDS.toDays(diff));
         if(nearestReading.getMonth() >= nowReading.getMonth() || 
@@ -332,8 +335,6 @@ public class UpdateDetail extends javax.swing.JFrame {
             return 2;
         }else if(count < 28){
             return 3;
-        }else if(nearestReading.getReading_id()==0){
-            return 0;
         }else{
             return 0;
         }
