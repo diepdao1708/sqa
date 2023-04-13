@@ -11,7 +11,6 @@ import java.text.SimpleDateFormat;
 import controller.CustomerDAO;
 import model.Bill;
 import model.Customer;
-import model.Reading;
 import view.rate.RateFrm;
 import view.rate.RateVipFrm;
 import view.home.HomeFrm;
@@ -236,7 +235,7 @@ public class BillFrm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        HomeFrm tcf = new HomeFrm("customer");
+        HomeFrm tcf = new HomeFrm();
         tcf.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

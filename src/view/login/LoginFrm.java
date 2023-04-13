@@ -4,6 +4,7 @@ import controller.Const;
 import controller.LoginDAO;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import model.User;
 import view.home.HomeFrm;
 import view.register.RegisterFrm;
 
@@ -64,11 +65,6 @@ public class LoginFrm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addComponent(loginButton)
-                        .addGap(84, 84, 84)
-                        .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(174, 174, 174)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -78,8 +74,13 @@ public class LoginFrm extends javax.swing.JFrame {
                             .addComponent(passwordEditText)
                             .addComponent(accountCodeEditText, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(269, 269, 269)
-                        .addComponent(jLabel1)))
+                        .addGap(299, 299, 299)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(232, 232, 232)
+                        .addComponent(loginButton)
+                        .addGap(84, 84, 84)
+                        .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(232, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,11 +96,11 @@ public class LoginFrm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(passwordEditText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(95, 95, 95)
+                .addGap(96, 96, 96)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginButton)
                     .addComponent(registerButton))
-                .addGap(0, 111, Short.MAX_VALUE))
+                .addGap(0, 110, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -126,9 +127,9 @@ public class LoginFrm extends javax.swing.JFrame {
         LoginDAO loginDAO = new LoginDAO();
         String accountCode = accountCodeEditText.getText();
         String password = new String(passwordEditText.getPassword());
-        String role = loginDAO.login(accountCode, password);
-        if (!role.isEmpty()) {
-            (new HomeFrm(role)).setVisible(true);
+        User user = loginDAO.login(accountCode, password);
+        if (user != null) {
+            (new HomeFrm(user)).setVisible(true);
             this.dispose();
         } else {
             accountCodeEditText.requestFocus();

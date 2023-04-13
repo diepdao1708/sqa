@@ -1,14 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author Admin
- */
 public class User {
+
     private int user_id;
     private String account_code;
     private String password;
@@ -18,10 +11,10 @@ public class User {
     private String address;
     private String phone_number;
     private String email;
-    
+
     public User() {
-    
-    };
+
+    }
 
     public User(int user_id, String account_code, String password, String role, String name, String cccd, String address, String phone_number, String email) {
         this.user_id = user_id;
