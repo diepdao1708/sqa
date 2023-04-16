@@ -3,6 +3,7 @@ package view.login;
 import controller.Const;
 import controller.LoginDAO;
 import java.awt.Color;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.User;
 import view.home.HomeFrm;
@@ -13,6 +14,7 @@ public class LoginFrm extends javax.swing.JFrame {
     public LoginFrm() {
         initComponents();
 
+        setResizable(false);
         setTitle("Đăng nhập");
         setSize(830, 450);
         setLocationRelativeTo(this);
