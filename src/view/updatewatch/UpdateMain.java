@@ -105,6 +105,15 @@ public class UpdateMain extends javax.swing.JFrame {
             }
         });
         meterTable.setRowHeight(30);
+        meterTable.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                meterTableAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         meterTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 meterTableMouseClicked(evt);
@@ -196,6 +205,10 @@ public class UpdateMain extends javax.swing.JFrame {
         new UpdateDetail(meter_id, customer_id).setVisible(true);
         dispose();
     }//GEN-LAST:event_meterTableMouseClicked
+
+    private void meterTableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_meterTableAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_meterTableAncestorAdded
 
     /**
      * @param args the command line arguments
