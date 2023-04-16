@@ -57,7 +57,7 @@ public class HomeFrm extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Trang Chủ");
 
-        jButton1.setText("Hóa đơn nước");
+        jButton1.setText("Tính tiền nước");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
