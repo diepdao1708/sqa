@@ -57,7 +57,6 @@ public class RegisterFrm extends javax.swing.JFrame {
 
         jLabel4.setText("CCCD:");
 
-        note.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         note.setText("Ít nhất 8 ký tự bao gồm chữ hoa, chữ thường và số");
 
         backButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -65,6 +64,12 @@ public class RegisterFrm extends javax.swing.JFrame {
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
+            }
+        });
+
+        accountCodeEditText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accountCodeEditTextActionPerformed(evt);
             }
         });
 
@@ -102,7 +107,7 @@ public class RegisterFrm extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(258, 258, 258)
                         .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(239, Short.MAX_VALUE))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,6 +200,10 @@ public class RegisterFrm extends javax.swing.JFrame {
         (new LoginFrm()).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void accountCodeEditTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountCodeEditTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_accountCodeEditTextActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField accountCodeEditText;
