@@ -1,9 +1,5 @@
 package model;
 
-/**
- *
- * @author Admin
- */
 public class Customer {
     private String type;
     private int customer_id;

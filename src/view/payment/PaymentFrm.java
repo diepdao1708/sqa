@@ -1,6 +1,7 @@
 package view.payment;
 
 import controller.DAO;
+import java.awt.Color;
 import java.awt.print.PrinterException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.sql.*;
 
 public class PaymentFrm extends javax.swing.JFrame {
 
-    public void Date() {
+    private void Date() {
         SimpleDateFormat dFormat = new SimpleDateFormat("MMM-yyyy");
         Date date = new Date();
         String month = dFormat.format(date);
@@ -21,6 +22,11 @@ public class PaymentFrm extends javax.swing.JFrame {
     public PaymentFrm() {
         initComponents();
         Date();
+        setTitle("Thanh toán tiền nước");
+        setResizable(false);
+        setSize(850, 550);
+        setLocationRelativeTo(this);
+        getContentPane().setBackground(Color.white);
     }
 
     @SuppressWarnings("unchecked")
@@ -72,10 +78,11 @@ public class PaymentFrm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Thanh Toán Tiền Nước");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setText("Đóng tiền");
 
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setBackground(Color.white);
 
         texttien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,7 +122,6 @@ public class PaymentFrm extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Tổng Tiền");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/anh/Icon Gym Jframe/save.png"))); // NOI18N
         jButton1.setText("Save");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +144,6 @@ public class PaymentFrm extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/anh/Icon Gym Jframe/search.png"))); // NOI18N
         jButton3.setText("Tìm kiếm");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,7 +246,6 @@ public class PaymentFrm extends javax.swing.JFrame {
                                 .addGap(28, 28, 28))
         );
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/anh/Icon Gym Jframe/reset.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -286,13 +290,12 @@ public class PaymentFrm extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-
         print();
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         try {
-            textprint.print();// TODO add your handling code here:
+            textprint.print();
         } catch (PrinterException ex) {
             Logger.getLogger(PaymentFrm.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -338,7 +341,6 @@ public class PaymentFrm extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(PaymentFrm.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {
@@ -360,14 +362,7 @@ public class PaymentFrm extends javax.swing.JFrame {
             Logger.getLogger(PaymentFrm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PaymentFrm().setVisible(true);
-            }
-        });
-    }
+    
     // Variables declaration - do not modify
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
