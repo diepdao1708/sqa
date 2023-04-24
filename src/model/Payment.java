@@ -2,39 +2,26 @@ package model;
 
 public class Payment {
 
-    String id;
+    String account_code;
     String name;
     String email;
-    String tongTien;
+    String phone_number;
+    int total;
 
-    public Payment() {
-    }
-
-    public Payment(String id, String name, String email, String tongTien) {
-        this.id = id;
+    public Payment(String account_code, String name, String email, String phone_number, int total) {
+        this.account_code = account_code;
         this.name = name;
         this.email = email;
-        this.tongTien = tongTien;
+        this.phone_number = phone_number;
+        this.total = total;
     }
 
-    public String getEmail() {
-        return email;
+    public String getAccount_code() {
+        return account_code;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Payment(String email) {
-        this.email = email;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public void setAccount_code(String account_code) {
+        this.account_code = account_code;
     }
 
     public String getName() {
@@ -45,12 +32,29 @@ public class Payment {
         this.name = name;
     }
 
-    public String getTongTien() {
-        return tongTien;
+    public String getEmail() {
+        return email;
     }
 
-    public void setTongTien(String tongTien) {
-        this.tongTien = tongTien;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+   
+   
 }
