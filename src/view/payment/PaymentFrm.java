@@ -1,6 +1,7 @@
 package view.payment;
 
 import controller.DAO;
+import controller.PaymentDAO;
 import java.awt.print.PrinterException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import view.qr.QR;
 import java.sql.*;
+import model.Payment;
 
 public class PaymentFrm extends javax.swing.JFrame {
 
@@ -312,33 +314,26 @@ public class PaymentFrm extends javax.swing.JFrame {
     }
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
-        try {
+       
             int checkid = 0;
             String cid = textcid.getText();
             String cdate = jLabel6.getText();
-            DAO dao = new DAO();
-            Connection conn = dao.con;
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user INNER JOIN bill on bill.customer_id = user.user_id where user.user_id = " + cid);
-            ResultSet rs = stmt.executeQuery();
-            String userId;
-            while (rs.next()) {
-                checkid = 1;
-                textcid.setText(rs.getString("user_id"));
-                textcname.setText(rs.getString("name"));
-                textcemail.setText(rs.getString("email"));
-                textcphone.setText(rs.getString("phone_number"));
-                texttien.setText(rs.getString("total"));
-                userId = rs.getString("user_id");
-                String userName = rs.getString("name");
-                textcid.setText(userId);
-            }
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PaymentFrm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            PaymentDAO dao = new PaymentDAO();
+            
 
+            Payment payment = dao.paymentInfo(cid);
+            String userId;
+        
+                checkid = 1;
+                textcid.setText(payment.getAccount_code());
+                textcname.setText(payment.getName());
+                textcemail.setText(payment.getEmail());
+                textcphone.setText(payment.getPhone_number());
+                texttien.setText(Integer.toString(payment.getTotal()));
+//                userId = rs.getString("user_id");
+//                String userName = rs.getString("name");
+//                textcid.setText(userId);
+        
     }
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {
@@ -391,4 +386,8 @@ public class PaymentFrm extends javax.swing.JFrame {
     private javax.swing.JTextArea textprint;
     private javax.swing.JTextField texttien;
     // End of variables declaration
+
+    private DAO PaymentDAO() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
