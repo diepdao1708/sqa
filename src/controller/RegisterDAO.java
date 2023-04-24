@@ -1,17 +1,22 @@
 package controller;
 
+
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RegisterDAO extends DAO {
 
-    public RegisterDAO() {
+    private final Connection connection;
+
+    public RegisterDAO(Connection connection) {
+        this.connection = connection;
     }
 
     private RegisterData checkRegister(String password, String accountCode) {
         try {
-            PreparedStatement ps = con.prepareStatement("UPDATE user SET password = ? where account_code = ?");
+            PreparedStatement ps = connection.prepareStatement("UPDATE user SET password = ? where account_code = ?");
             ps.setString(1, password);
             ps.setString(2, accountCode);
 
@@ -24,6 +29,10 @@ public class RegisterDAO extends DAO {
     }
 
     public RegisterData register(String accountCode, String cccd, String password, String confirmPassword) {
+        accountCode = accountCode.trim();
+        cccd = cccd.trim();
+        password = password.trim();
+        confirmPassword = confirmPassword.trim();
         if (accountCode.isEmpty()) {
             return new RegisterData(500, Const.account_code_empty);
         }
@@ -44,7 +53,7 @@ public class RegisterDAO extends DAO {
         }
 
         try {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM user WHERE account_code = ? AND cccd = ?");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM user WHERE account_code = ? AND cccd = ?");
             ps.setString(1, accountCode);
             ps.setString(2, cccd);
 

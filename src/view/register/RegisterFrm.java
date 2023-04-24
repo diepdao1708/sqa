@@ -1,6 +1,7 @@
 package view.register;
 
 import controller.Const;
+import controller.DAO;
 import controller.RegisterDAO;
 import controller.RegisterData;
 import java.awt.Color;
@@ -17,6 +18,7 @@ public class RegisterFrm extends javax.swing.JFrame {
         setSize(850, 550);
         setLocationRelativeTo(this);
         getContentPane().setBackground(Color.white);
+        accountCodeEditText.requestFocus();
     }
 
     @SuppressWarnings("unchecked")
@@ -162,15 +164,16 @@ public class RegisterFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        RegisterDAO registerDAO = new RegisterDAO();
-        String accountCode = accountCodeEditText.getText();
+        RegisterDAO registerDAO = new RegisterDAO(DAO.con);
+        String accountCode = accountCodeEditText.getText().trim();
         String password = new String(passwordEditText.getPassword());
         String confirmPassword = new String(confirmPasswordEditText.getPassword());
-        String cccd = cccdEditText.getText();
+        String cccd = cccdEditText.getText().trim();
 
         RegisterData registerData = registerDAO.register(accountCode, cccd, password, confirmPassword);
 
         if (registerData.getStatus() == 200) {
+            JOptionPane.showMessageDialog(this, registerData.getMessage());
             (new LoginFrm()).setVisible(true);
             this.dispose();
         } else {
