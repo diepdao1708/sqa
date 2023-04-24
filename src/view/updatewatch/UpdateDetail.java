@@ -46,7 +46,7 @@ public class UpdateDetail extends javax.swing.JFrame {
         UserDAO userDAO = new UserDAO();
         User user = userDAO.getUserById(customer_id);
         MeterDAO meterDAO = new MeterDAO();
-        Meter meter = meterDAO.meterInfo(customer_id);
+        Meter meter = meterDAO.meterInfo(meter_id);
         customerName.setText(user.getName());
         meterId.setText(meter.getSerial_number());
         this.id.setText(meter_id + "");
@@ -253,7 +253,7 @@ public class UpdateDetail extends javax.swing.JFrame {
     }//GEN-LAST:event_updateBTNActionPerformed
 
     private void updateBTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBTNMouseClicked
-        model = (DefaultTableModel) readingTable.getModel();
+         model = (DefaultTableModel) readingTable.getModel();
         Date dateUpdate = this.dateUpdate.getDate();
         int meter_id = Integer.parseInt(id.getText());
         ReadingDAO rdao = new ReadingDAO();
@@ -267,34 +267,29 @@ public class UpdateDetail extends javax.swing.JFrame {
             int month = calendar.get(calendar.MONTH) + 1;
             int year = calendar.get(calendar.YEAR);
             Reading readUpdate = new Reading();
-            readUpdate.setMonth(month);
-            readUpdate.setYear(year);
-            readUpdate.setCreated_date(dateUpdate);
-            readUpdate.setReading(readingUpdate);
-            readUpdate.setMeter_id(meter_id);
+            readUpdate.setMonth(month); readUpdate.setYear(year); readUpdate.setCreated_date(dateUpdate);
+            readUpdate.setReading(readingUpdate); readUpdate.setMeter_id(meter_id);
             switch (check(readingNearest, readUpdate)) {
                 case 0:
                     int row = rdao.insertReading(readUpdate);
-                    if (row == 1) {
+                    if(row == 1){
                         JOptionPane.showMessageDialog(this, "Cập nhật thanh công");
                         fillTable(meter_id);
+                        numReading.setText("");
                     }
                     break;
                 case 1:
-                    JOptionPane.showMessageDialog(this, "Ngày tháng cập nhật không hợp lệ");
+                    JOptionPane.showMessageDialog(this, "Chưa đến thời hạn cập nhật");
                     break;
                 case 2:
                     JOptionPane.showMessageDialog(this, "Số nước không hợp lệ");
                     numReading.requestFocus();
-                    break;
-                case 3:
-                    JOptionPane.showMessageDialog(this, "Chưa đến thời hạn cập nhật");
-                    break;
+                    break;           
                 default:
                     break;
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Chưa nhập hoặc nhập sai số nước");
+            JOptionPane.showMessageDialog(this, "Chưa nhập hoặc nhập sai định dạng số nước");
             numReading.requestFocus();
         }
     }//GEN-LAST:event_updateBTNMouseClicked
@@ -305,21 +300,28 @@ public class UpdateDetail extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private int check(Reading nearestReading, Reading nowReading) {
-        if (nearestReading.getReading_id() == 0) {
+        if(nearestReading==null){
             return 0;
         }
-        Long diff = nowReading.getCreated_date().getTime() - nearestReading.getCreated_date().getTime();
+        long diff = nowReading.getCreated_date().getTime() - nearestReading.getCreated_date().getTime();
         int count = (int) (TimeUnit.MILLISECONDS.toDays(diff));
-        if (nearestReading.getMonth() >= nowReading.getMonth()
-                || nearestReading.getYear() > nowReading.getYear()) {
+        if(count < 28){
             return 1;
-        } else if (nearestReading.getReading() >= nowReading.getReading()) {
+        }else if(nearestReading.getReading() >= nowReading.getReading()){
             return 2;
-        } else if (count < 28) {
-            return 3;
-        } else {
+        }else{
             return 0;
         }
+//        if(nearestReading.getMonth() >= nowReading.getMonth() || 
+//                nearestReading.getYear() > nowReading.getYear()){
+//            return 1;
+//        }else if(nearestReading.getReading() >= nowReading.getReading()){
+//            return 2;
+//        }else if(count < 28){
+//            return 3;
+//        }else{
+//            return 0;
+//        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

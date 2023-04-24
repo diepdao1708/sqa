@@ -13,7 +13,7 @@ public class UpdateMain extends javax.swing.JFrame {
 
     private DefaultTableModel model;
     private User user;
-
+    
     public UpdateMain(User user) {
         this.user = user;
         initComponents();
