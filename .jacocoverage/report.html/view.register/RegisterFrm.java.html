@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>RegisterFrm.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;SQA&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">view.register</a> &gt; <span class="el_source">RegisterFrm.java</span></div><h1>RegisterFrm.java</h1><pre class="source lang-java linenums">package view.register;
+
+import controller.Const;
+import controller.DAO;
+import controller.RegisterDAO;
+import controller.RegisterData;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+import view.login.LoginFrm;
+
+public class RegisterFrm extends javax.swing.JFrame {
+
+<span class="nc" id="L13">    public RegisterFrm() {</span>
+<span class="nc" id="L14">        initComponents();</span>
+
+<span class="nc" id="L16">        setTitle(&quot;Đăng Ký&quot;);</span>
+<span class="nc" id="L17">        setResizable(false);</span>
+<span class="nc" id="L18">        setSize(850, 550);</span>
+<span class="nc" id="L19">        setLocationRelativeTo(this);</span>
+<span class="nc" id="L20">        getContentPane().setBackground(Color.white);</span>
+<span class="nc" id="L21">        accountCodeEditText.requestFocus();</span>
+<span class="nc" id="L22">    }</span>
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L28">        registerButton = new javax.swing.JButton();</span>
+<span class="nc" id="L29">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L30">        jLabel2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L31">        jLabel3 = new javax.swing.JLabel();</span>
+<span class="nc" id="L32">        cccdEditText = new javax.swing.JTextField();</span>
+<span class="nc" id="L33">        passwordEditText = new javax.swing.JPasswordField();</span>
+<span class="nc" id="L34">        jLabel4 = new javax.swing.JLabel();</span>
+<span class="nc" id="L35">        note = new javax.swing.JLabel();</span>
+<span class="nc" id="L36">        backButton = new javax.swing.JButton();</span>
+<span class="nc" id="L37">        accountCodeEditText = new javax.swing.JTextField();</span>
+<span class="nc" id="L38">        jLabel5 = new javax.swing.JLabel();</span>
+<span class="nc" id="L39">        confirmPasswordEditText = new javax.swing.JPasswordField();</span>
+
+<span class="nc" id="L41">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+
+<span class="nc" id="L43">        registerButton.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L44">        registerButton.setText(&quot;Đăng ký&quot;);</span>
+<span class="nc" id="L45">        registerButton.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L47">                registerButtonActionPerformed(evt);</span>
+<span class="nc" id="L48">            }</span>
+        });
+
+<span class="nc" id="L51">        jLabel1.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L52">        jLabel1.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 36)); // NOI18N</span>
+<span class="nc" id="L53">        jLabel1.setText(&quot;Đăng Ký&quot;);</span>
+
+<span class="nc" id="L55">        jLabel2.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L56">        jLabel2.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L57">        jLabel2.setText(&quot;Mã Khách Hàng:&quot;);</span>
+
+<span class="nc" id="L59">        jLabel3.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L60">        jLabel3.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L61">        jLabel3.setText(&quot;Mật Khẩu:&quot;);</span>
+
+<span class="nc" id="L63">        jLabel4.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L64">        jLabel4.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L65">        jLabel4.setText(&quot;CCCD:&quot;);</span>
+
+<span class="nc" id="L67">        note.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L68">        note.setText(&quot;Ít nhất 8 ký tự bao gồm chữ hoa, chữ thường và số&quot;);</span>
+
+<span class="nc" id="L70">        backButton.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L71">        backButton.setText(&quot;&lt;&quot;);</span>
+<span class="nc" id="L72">        backButton.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L74">                backButtonActionPerformed(evt);</span>
+<span class="nc" id="L75">            }</span>
+        });
+
+<span class="nc" id="L78">        accountCodeEditText.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L79">        accountCodeEditText.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L81">                accountCodeEditTextActionPerformed(evt);</span>
+<span class="nc" id="L82">            }</span>
+        });
+
+<span class="nc" id="L85">        jLabel5.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L86">        jLabel5.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L87">        jLabel5.setText(&quot;Xác nhận mật khẩu:&quot;);</span>
+
+<span class="nc" id="L89">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L90">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L91">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L92">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L93">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L94">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L95">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L96">                        .addContainerGap()</span>
+<span class="nc" id="L97">                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L98">                        .addGap(271, 271, 271)</span>
+<span class="nc" id="L99">                        .addComponent(jLabel1))</span>
+<span class="nc" id="L100">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L101">                        .addGap(124, 124, 124)</span>
+<span class="nc" id="L102">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L103">                            .addComponent(jLabel3)</span>
+<span class="nc" id="L104">                            .addComponent(jLabel5)</span>
+<span class="nc" id="L105">                            .addComponent(jLabel4)</span>
+<span class="nc" id="L106">                            .addComponent(jLabel2))</span>
+<span class="nc" id="L107">                        .addGap(47, 47, 47)</span>
+<span class="nc" id="L108">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L109">                            .addComponent(cccdEditText, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L110">                            .addComponent(accountCodeEditText, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L111">                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)</span>
+<span class="nc" id="L112">                                .addComponent(confirmPasswordEditText, javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L113">                                .addComponent(passwordEditText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L114">                            .addComponent(note, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))))</span>
+<span class="nc" id="L115">                .addGap(121, 229, Short.MAX_VALUE))</span>
+<span class="nc" id="L116">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
+<span class="nc" id="L117">                .addGap(0, 0, Short.MAX_VALUE)</span>
+<span class="nc" id="L118">                .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L119">                .addGap(321, 321, 321))</span>
+        );
+<span class="nc" id="L121">        layout.setVerticalGroup(</span>
+<span class="nc" id="L122">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L123">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L124">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L125">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L126">                        .addContainerGap()</span>
+<span class="nc" id="L127">                        .addComponent(jLabel1))</span>
+<span class="nc" id="L128">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L129">                        .addGap(14, 14, 14)</span>
+<span class="nc" id="L130">                        .addComponent(backButton)))</span>
+<span class="nc" id="L131">                .addGap(57, 57, 57)</span>
+<span class="nc" id="L132">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L133">                    .addComponent(accountCodeEditText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L134">                    .addComponent(jLabel2))</span>
+<span class="nc" id="L135">                .addGap(28, 28, 28)</span>
+<span class="nc" id="L136">                .addComponent(note)</span>
+<span class="nc" id="L137">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L138">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L139">                    .addComponent(jLabel3)</span>
+<span class="nc" id="L140">                    .addComponent(passwordEditText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L141">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)</span>
+<span class="nc" id="L142">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L143">                    .addComponent(confirmPasswordEditText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L144">                    .addComponent(jLabel5))</span>
+<span class="nc" id="L145">                .addGap(29, 29, 29)</span>
+<span class="nc" id="L146">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L147">                    .addComponent(cccdEditText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L148">                    .addComponent(jLabel4))</span>
+<span class="nc" id="L149">                .addGap(40, 40, 40)</span>
+<span class="nc" id="L150">                .addComponent(registerButton)</span>
+<span class="nc" id="L151">                .addGap(51, 51, 51))</span>
+        );
+
+<span class="nc" id="L154">        pack();</span>
+<span class="nc" id="L155">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void accountCodeEditTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountCodeEditTextActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L159">    }//GEN-LAST:event_accountCodeEditTextActionPerformed</span>
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+<span class="nc" id="L162">        (new LoginFrm()).setVisible(true);</span>
+<span class="nc" id="L163">        this.dispose();</span>
+<span class="nc" id="L164">    }//GEN-LAST:event_backButtonActionPerformed</span>
+
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+<span class="nc" id="L167">        RegisterDAO registerDAO = new RegisterDAO(DAO.con);</span>
+<span class="nc" id="L168">        String accountCode = accountCodeEditText.getText().trim();</span>
+<span class="nc" id="L169">        String password = new String(passwordEditText.getPassword());</span>
+<span class="nc" id="L170">        String confirmPassword = new String(confirmPasswordEditText.getPassword());</span>
+<span class="nc" id="L171">        String cccd = cccdEditText.getText().trim();</span>
+
+<span class="nc" id="L173">        RegisterData registerData = registerDAO.register(accountCode, cccd, password, confirmPassword);</span>
+
+<span class="nc bnc" id="L175" title="All 2 branches missed.">        if (registerData.getStatus() == 200) {</span>
+<span class="nc" id="L176">            JOptionPane.showMessageDialog(this, registerData.getMessage());</span>
+<span class="nc" id="L177">            (new LoginFrm()).setVisible(true);</span>
+<span class="nc" id="L178">            this.dispose();</span>
+        } else {
+<span class="nc bnc" id="L180" title="All 2 branches missed.">            if (registerData.getMessage().equals(Const.account_code_empty)</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">                || registerData.getMessage().equals(Const.exist_account)</span>
+<span class="nc bnc" id="L182" title="All 2 branches missed.">                || registerData.getMessage().equals(Const.register_failure)</span>
+<span class="nc bnc" id="L183" title="All 2 branches missed.">                || registerData.getMessage().equals(Const.not_exist_customer_code)) {</span>
+<span class="nc" id="L184">                accountCodeEditText.requestFocus();</span>
+            }
+<span class="nc bnc" id="L186" title="All 2 branches missed.">            if (registerData.getMessage().equals(Const.password_empty)</span>
+<span class="nc bnc" id="L187" title="All 2 branches missed.">                || registerData.getMessage().equals(Const.password_not_matching)) {</span>
+<span class="nc" id="L188">                passwordEditText.requestFocus();</span>
+            }
+<span class="nc bnc" id="L190" title="All 2 branches missed.">            if (registerData.getMessage().equals(Const.confirm_password_empty)) {</span>
+<span class="nc" id="L191">                confirmPasswordEditText.requestFocus();</span>
+            }
+<span class="nc bnc" id="L193" title="All 2 branches missed.">            if (registerData.getMessage().equals(Const.cccd_empty)) {</span>
+<span class="nc" id="L194">                cccdEditText.requestFocus();</span>
+            }
+<span class="nc bnc" id="L196" title="All 2 branches missed.">            note.setForeground(registerData.getMessage().equals(Const.format_password) ? Color.red : Color.black);</span>
+
+<span class="nc" id="L198">            JOptionPane.showMessageDialog(this, registerData.getMessage());</span>
+        }
+<span class="nc" id="L200">    }//GEN-LAST:event_registerButtonActionPerformed</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField accountCodeEditText;
+    private javax.swing.JButton backButton;
+    private javax.swing.JTextField cccdEditText;
+    private javax.swing.JPasswordField confirmPasswordEditText;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel note;
+    private javax.swing.JPasswordField passwordEditText;
+    private javax.swing.JButton registerButton;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

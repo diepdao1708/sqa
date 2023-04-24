@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>RateFrm.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;SQA&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">view.rate</a> &gt; <span class="el_source">RateFrm.java</span></div><h1>RateFrm.java</h1><pre class="source lang-java linenums">package view.rate;
+
+import controller.CustomerDAO;
+import controller.RateDAO;
+import java.awt.Color;
+import model.Customer;
+import model.Rate;
+import model.User;
+import view.bill.BillFrm;
+
+public class RateFrm extends javax.swing.JFrame {
+    private User user;
+    
+<span class="nc" id="L14">    CustomerDAO customerDAO = new CustomerDAO();</span>
+<span class="nc" id="L15">    RateDAO rateDAO = new RateDAO();</span>
+
+<span class="nc" id="L17">    public RateFrm(User user) {</span>
+<span class="nc" id="L18">        this.user = user;</span>
+<span class="nc" id="L19">        initComponents();</span>
+        
+<span class="nc" id="L21">        setTitle(&quot;Bảng Giá&quot;);</span>
+<span class="nc" id="L22">        setResizable(false);</span>
+<span class="nc" id="L23">        setSize(850, 550);</span>
+<span class="nc" id="L24">        setLocationRelativeTo(this);</span>
+<span class="nc" id="L25">        getContentPane().setBackground(Color.white);</span>
+        
+<span class="nc" id="L27">        Customer customer = customerDAO.customerInfo(user.getUser_id());</span>
+<span class="nc" id="L28">        Rate rate = rateDAO.rateInfo(customer.getRate_id());</span>
+        
+<span class="nc" id="L30">        jTextField1.setText(Integer.toString(rate.getPrice_first()));</span>
+<span class="nc" id="L31">        jTextField1.setHorizontalAlignment(jTextField1.RIGHT);</span>
+        
+<span class="nc" id="L33">        jTextField2.setText(Integer.toString(rate.getPrice_second()));</span>
+<span class="nc" id="L34">        jTextField2.setHorizontalAlignment(jTextField1.RIGHT);</span>
+        
+<span class="nc" id="L36">        jTextField3.setText(Integer.toString(rate.getPrice_third()));</span>
+<span class="nc" id="L37">        jTextField3.setHorizontalAlignment(jTextField1.RIGHT);</span>
+        
+<span class="nc" id="L39">        jTextField4.setText(Integer.toString(rate.getPrice_fourth()));</span>
+<span class="nc" id="L40">        jTextField4.setHorizontalAlignment(jTextField1.RIGHT);</span>
+<span class="nc" id="L41">    }</span>
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L47">        jPanel1 = new javax.swing.JPanel();</span>
+<span class="nc" id="L48">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L49">        jLabel2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L50">        jLabel3 = new javax.swing.JLabel();</span>
+<span class="nc" id="L51">        jLabel4 = new javax.swing.JLabel();</span>
+<span class="nc" id="L52">        jLabel5 = new javax.swing.JLabel();</span>
+<span class="nc" id="L53">        jTextField1 = new javax.swing.JTextField();</span>
+<span class="nc" id="L54">        jTextField2 = new javax.swing.JTextField();</span>
+<span class="nc" id="L55">        jTextField3 = new javax.swing.JTextField();</span>
+<span class="nc" id="L56">        jTextField4 = new javax.swing.JTextField();</span>
+<span class="nc" id="L57">        jLabel6 = new javax.swing.JLabel();</span>
+<span class="nc" id="L58">        jLabel7 = new javax.swing.JLabel();</span>
+<span class="nc" id="L59">        backButton = new javax.swing.JButton();</span>
+
+<span class="nc" id="L61">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+
+<span class="nc" id="L63">        jPanel1.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L64">        jPanel1.setPreferredSize(new java.awt.Dimension(830, 450));</span>
+
+<span class="nc" id="L66">        jLabel1.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L67">        jLabel1.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 36)); // NOI18N</span>
+<span class="nc" id="L68">        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L69">        jLabel1.setText(&quot;Bảng giá&quot;);</span>
+
+<span class="nc" id="L71">        jLabel2.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L72">        jLabel2.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L73">        jLabel2.setText(&quot;10m3 đầu tiên:&quot;);</span>
+
+<span class="nc" id="L75">        jLabel3.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L76">        jLabel3.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L77">        jLabel3.setText(&quot;Từ 10m3 đến 20m3:&quot;);</span>
+
+<span class="nc" id="L79">        jLabel4.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L80">        jLabel4.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L81">        jLabel4.setText(&quot;Từ trên 20m3 đến 30m3:&quot;);</span>
+
+<span class="nc" id="L83">        jLabel5.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L84">        jLabel5.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L85">        jLabel5.setText(&quot;Từ trên 30m3:&quot;);</span>
+
+<span class="nc" id="L87">        jTextField1.setEditable(false);</span>
+<span class="nc" id="L88">        jTextField1.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L89">        jTextField1.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L90">        jTextField1.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L92">                jTextField1ActionPerformed(evt);</span>
+<span class="nc" id="L93">            }</span>
+        });
+
+<span class="nc" id="L96">        jTextField2.setEditable(false);</span>
+<span class="nc" id="L97">        jTextField2.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L98">        jTextField2.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+
+<span class="nc" id="L100">        jTextField3.setEditable(false);</span>
+<span class="nc" id="L101">        jTextField3.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L102">        jTextField3.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+
+<span class="nc" id="L104">        jTextField4.setEditable(false);</span>
+<span class="nc" id="L105">        jTextField4.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L106">        jTextField4.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+
+<span class="nc" id="L108">        jLabel6.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L109">        jLabel6.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 18)); // NOI18N</span>
+<span class="nc" id="L110">        jLabel6.setText(&quot;Mức sử dụng (m3/hộ/tháng)&quot;);</span>
+
+<span class="nc" id="L112">        jLabel7.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L113">        jLabel7.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 18)); // NOI18N</span>
+<span class="nc" id="L114">        jLabel7.setText(&quot;Giá bán nước (đồng/m3)&quot;);</span>
+
+<span class="nc" id="L116">        backButton.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L117">        backButton.setText(&quot;&lt;&quot;);</span>
+<span class="nc" id="L118">        backButton.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L120">                backButtonActionPerformed(evt);</span>
+<span class="nc" id="L121">            }</span>
+        });
+
+<span class="nc" id="L124">        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);</span>
+<span class="nc" id="L125">        jPanel1.setLayout(jPanel1Layout);</span>
+<span class="nc" id="L126">        jPanel1Layout.setHorizontalGroup(</span>
+<span class="nc" id="L127">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L128">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L129">                .addContainerGap()</span>
+<span class="nc" id="L130">                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L131">                .addGap(276, 276, 276)</span>
+<span class="nc" id="L132">                .addComponent(jLabel1)</span>
+<span class="nc" id="L133">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+<span class="nc" id="L134">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L135">                .addGap(86, 86, 86)</span>
+<span class="nc" id="L136">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L137">                    .addComponent(jLabel2)</span>
+<span class="nc" id="L138">                    .addComponent(jLabel6)</span>
+<span class="nc" id="L139">                    .addComponent(jLabel3)</span>
+<span class="nc" id="L140">                    .addComponent(jLabel4)</span>
+<span class="nc" id="L141">                    .addComponent(jLabel5))</span>
+<span class="nc" id="L142">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)</span>
+<span class="nc" id="L143">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L144">                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L145">                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L146">                    .addComponent(jLabel7)</span>
+<span class="nc" id="L147">                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L148">                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L149">                .addGap(91, 91, 91))</span>
+        );
+<span class="nc" id="L151">        jPanel1Layout.setVerticalGroup(</span>
+<span class="nc" id="L152">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L153">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L154">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L155">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L156">                        .addContainerGap()</span>
+<span class="nc" id="L157">                        .addComponent(jLabel1))</span>
+<span class="nc" id="L158">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L159">                        .addGap(16, 16, 16)</span>
+<span class="nc" id="L160">                        .addComponent(backButton)))</span>
+<span class="nc" id="L161">                .addGap(68, 68, 68)</span>
+<span class="nc" id="L162">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L163">                    .addComponent(jLabel6)</span>
+<span class="nc" id="L164">                    .addComponent(jLabel7))</span>
+<span class="nc" id="L165">                .addGap(43, 43, 43)</span>
+<span class="nc" id="L166">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L167">                    .addComponent(jLabel2)</span>
+<span class="nc" id="L168">                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L169">                .addGap(28, 28, 28)</span>
+<span class="nc" id="L170">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L171">                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L172">                    .addComponent(jLabel3))</span>
+<span class="nc" id="L173">                .addGap(29, 29, 29)</span>
+<span class="nc" id="L174">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L175">                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L176">                    .addComponent(jLabel4))</span>
+<span class="nc" id="L177">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)</span>
+<span class="nc" id="L178">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L179">                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L180">                    .addComponent(jLabel5))</span>
+<span class="nc" id="L181">                .addGap(97, 97, 97))</span>
+        );
+
+<span class="nc" id="L184">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L185">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L186">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L187">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L188">            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L190">        layout.setVerticalGroup(</span>
+<span class="nc" id="L191">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L192">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L193">                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)</span>
+<span class="nc" id="L194">                .addContainerGap())</span>
+        );
+
+<span class="nc" id="L197">        pack();</span>
+<span class="nc" id="L198">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L202">    }//GEN-LAST:event_jTextField1ActionPerformed</span>
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+<span class="nc" id="L205">        (new BillFrm(user)).setVisible(true);</span>
+<span class="nc" id="L206">        this.dispose();</span>
+<span class="nc" id="L207">    }//GEN-LAST:event_backButtonActionPerformed</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

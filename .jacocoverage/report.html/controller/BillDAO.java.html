@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BillDAO.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;SQA&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">BillDAO.java</span></div><h1>BillDAO.java</h1><pre class="source lang-java linenums">package controller;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import model.Bill;
+import model.Rate;
+
+public class BillDAO extends DAO {
+
+<span class="nc" id="L11">    public BillDAO() {</span>
+
+<span class="nc" id="L13">    }</span>
+
+    public int calculateBill(String type, int current_reading, Rate rate) {
+        int res;
+<span class="nc" id="L17">        int change = current_reading;</span>
+
+<span class="nc bnc" id="L19" title="All 2 branches missed.">        if (type.equals(&quot;normal&quot;)) {</span>
+            // Với 10m3 đầu
+<span class="nc bnc" id="L21" title="All 2 branches missed.">            if (change &lt;= 10) {</span>
+<span class="nc" id="L22">                res = change * rate.getPrice_first();</span>
+<span class="nc" id="L23">                return res;</span>
+            } // Với từ 10m3 đến 20m3
+<span class="nc bnc" id="L25" title="All 4 branches missed.">            else if (change &gt; 10 &amp;&amp; change &lt;= 20) {</span>
+<span class="nc" id="L26">                res = 10 * rate.getPrice_first() + (change - 10) * rate.getPrice_second();</span>
+<span class="nc" id="L27">                return res;</span>
+            } // Với từ 20m3 đến 30m3
+<span class="nc bnc" id="L29" title="All 4 branches missed.">            else if (change &gt; 20 &amp;&amp; change &lt;= 30) {</span>
+<span class="nc" id="L30">                res = 10 * rate.getPrice_first() + 10 * rate.getPrice_second() + (change - 20) * rate.getPrice_third();</span>
+<span class="nc" id="L31">                return res;</span>
+            } // Với trên 30m3
+            else {
+<span class="nc" id="L34">                res = 10 * rate.getPrice_first() + 10 * rate.getPrice_second()</span>
+<span class="nc" id="L35">                        + 10 * rate.getPrice_third() + (change - 30) * rate.getPrice_fourth();</span>
+<span class="nc" id="L36">                return res;</span>
+            }
+        } // Tính tiền nước cho các tổ chức kinh doanh, doanh nghiệp
+        else {
+<span class="nc" id="L40">            res = change * rate.getPrice_first();</span>
+<span class="nc" id="L41">            return res;</span>
+        }
+    }
+
+    public int calculateBill(String type, int previous_reading, int current_reading, Rate rate) {
+        int res;
+<span class="nc" id="L47">        int change = current_reading - previous_reading;</span>
+
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        if (type.equals(&quot;normal&quot;)) {</span>
+            // Với 10m3 đầu
+<span class="nc bnc" id="L51" title="All 2 branches missed.">            if (change &lt;= 10) {</span>
+<span class="nc" id="L52">                res = change * rate.getPrice_first();</span>
+<span class="nc" id="L53">                return res;</span>
+            } // Với từ 10m3 đến 20m3
+<span class="nc bnc" id="L55" title="All 4 branches missed.">            else if (change &gt; 10 &amp;&amp; change &lt;= 20) {</span>
+<span class="nc" id="L56">                res = 10 * rate.getPrice_first() + (change - 10) * rate.getPrice_second();</span>
+<span class="nc" id="L57">                return res;</span>
+            } // Với từ 20m3 đến 30m3
+<span class="nc bnc" id="L59" title="All 4 branches missed.">            else if (change &gt; 20 &amp;&amp; change &lt;= 30) {</span>
+<span class="nc" id="L60">                res = 10 * rate.getPrice_first() + 10 * rate.getPrice_second() + (change - 20) * rate.getPrice_third();</span>
+<span class="nc" id="L61">                return res;</span>
+            } // Với trên 30m3
+            else {
+<span class="nc" id="L64">                res = 10 * rate.getPrice_first() + 10 * rate.getPrice_second()</span>
+<span class="nc" id="L65">                        + 10 * rate.getPrice_third() + (change - 30) * rate.getPrice_fourth();</span>
+<span class="nc" id="L66">                return res;</span>
+            }
+        } // Tính tiền nước cho các tổ chức kinh doanh, doanh nghiệp
+        else {
+<span class="nc" id="L70">            res = change * rate.getPrice_first();</span>
+<span class="nc" id="L71">            return res;</span>
+        }
+    }
+
+    public Bill billInfo(int customer_id, int month, int year) {
+<span class="nc" id="L76">        Bill bill = null;</span>
+
+        try {
+<span class="nc" id="L79">            String query = &quot;select * from bill where customer_id = ? and month = ? and year = ?&quot;;</span>
+<span class="nc" id="L80">            PreparedStatement statement = con.prepareStatement(query);</span>
+<span class="nc" id="L81">            statement.setInt(1, customer_id);</span>
+<span class="nc" id="L82">            statement.setInt(2, month);</span>
+<span class="nc" id="L83">            statement.setInt(3, year);</span>
+<span class="nc" id="L84">            ResultSet rs = statement.executeQuery();</span>
+
+<span class="nc bnc" id="L86" title="All 2 branches missed.">            while (rs.next()) {</span>
+<span class="nc" id="L87">                int bill_id = rs.getInt(&quot;bill_id&quot;);</span>
+<span class="nc" id="L88">                int previous_reading = rs.getInt(&quot;previous_reading&quot;);</span>
+<span class="nc" id="L89">                int current_reading = rs.getInt(&quot;current_reading&quot;);</span>
+<span class="nc" id="L90">                double amount = rs.getDouble(&quot;amount&quot;);</span>
+<span class="nc" id="L91">                double total = rs.getDouble(&quot;total&quot;);</span>
+<span class="nc" id="L92">                boolean status = rs.getBoolean(&quot;status&quot;);</span>
+
+<span class="nc" id="L94">                bill = new Bill(bill_id, month, year, previous_reading, current_reading, amount, total, status, customer_id);</span>
+<span class="nc" id="L95">                return bill;</span>
+            }
+<span class="nc" id="L97">        } catch (SQLException ex) {</span>
+<span class="nc" id="L98">            System.out.println(ex);</span>
+<span class="nc" id="L99">        }</span>
+<span class="nc" id="L100">        return bill;</span>
+    }
+
+    public boolean saveBill(int customer_id, int month, int year, int current_reading, int previous_reading, String type, Rate rate) {
+<span class="nc" id="L104">        BillDAO billDAO = new BillDAO();</span>
+<span class="nc" id="L105">        double amount = (double) billDAO.calculateBill(type, previous_reading, current_reading, rate);</span>
+<span class="nc" id="L106">        double total = Math.round(amount * 1.08 * 1000.0) / 1000.0;</span>
+        try {
+<span class="nc" id="L108">            String query = &quot;insert into bill (month, year, previous_reading, current_reading, amount, total, status, customer_id)&quot;</span>
+                    + &quot;values (?, ?, ?, ?, ?, ?, ?, ?)&quot;;
+<span class="nc" id="L110">            PreparedStatement statement = con.prepareStatement(query);</span>
+<span class="nc" id="L111">            statement.setInt(1, month);</span>
+<span class="nc" id="L112">            statement.setInt(2, year);</span>
+<span class="nc" id="L113">            statement.setInt(3, previous_reading);</span>
+<span class="nc" id="L114">            statement.setInt(4, current_reading);</span>
+<span class="nc" id="L115">            statement.setDouble(5, amount);</span>
+<span class="nc" id="L116">            statement.setDouble(6, total);</span>
+<span class="nc" id="L117">            statement.setBoolean(7, false);</span>
+<span class="nc" id="L118">            statement.setInt(8, customer_id);</span>
+
+<span class="nc" id="L120">            statement.executeUpdate();</span>
+<span class="nc" id="L121">            return true;</span>
+<span class="nc" id="L122">        } catch (SQLException ex) {</span>
+<span class="nc" id="L123">            System.out.println(ex);</span>
+        }
+<span class="nc" id="L125">        return false;</span>
+    }
+
+    public int numbersBill(int customer_id) {
+<span class="nc" id="L129">        int count = 0;</span>
+        try {
+<span class="nc" id="L131">            String query = &quot;select count(*) from bill&quot;;</span>
+<span class="nc" id="L132">            PreparedStatement statement = con.prepareStatement(query);</span>
+<span class="nc" id="L133">            ResultSet rs = statement.executeQuery();</span>
+<span class="nc" id="L134">            rs.next();</span>
+<span class="nc" id="L135">            count = rs.getInt(1);</span>
+<span class="nc" id="L136">            return count;</span>
+
+<span class="nc" id="L138">        } catch (SQLException ex) {</span>
+<span class="nc" id="L139">            System.out.println(ex);</span>
+        }
+<span class="nc" id="L141">        return count;</span>
+
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

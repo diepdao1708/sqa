@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ReadingDAO.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;SQA&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">ReadingDAO.java</span></div><h1>ReadingDAO.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package controller;
+
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import model.Reading;
+
+/**
+ *
+ * @author Admin
+ */
+
+public class ReadingDAO extends DAO {
+<span class="nc" id="L23">    public ReadingDAO() {</span>
+        
+<span class="nc" id="L25">    }</span>
+    
+    public Reading readingInfo(int meter_id, int month, int year) {
+<span class="nc" id="L28">        Reading water_reading = null;</span>
+        
+        try {
+<span class="nc" id="L31">            String query = &quot;select * from reading where meter_id = ? and month = ? and year = ?&quot;;</span>
+<span class="nc" id="L32">            PreparedStatement statement = con.prepareStatement(query);</span>
+<span class="nc" id="L33">            statement.setInt(1, meter_id);</span>
+<span class="nc" id="L34">            statement.setInt(2, month);</span>
+<span class="nc" id="L35">            statement.setInt(3, year);</span>
+<span class="nc" id="L36">            ResultSet rs = statement.executeQuery();</span>
+
+<span class="nc bnc" id="L38" title="All 2 branches missed.">            while(rs.next()) {</span>
+<span class="nc" id="L39">                int reading_id = rs.getInt(&quot;reading_id&quot;);</span>
+<span class="nc" id="L40">                int reading = rs.getInt(&quot;reading&quot;);</span>
+<span class="nc" id="L41">                Date created_date = rs.getDate(&quot;created_date&quot;);</span>
+<span class="nc" id="L42">                water_reading = new Reading(reading_id, meter_id, month, year, reading, created_date);</span>
+<span class="nc" id="L43">            }</span>
+<span class="nc" id="L44">        } catch(SQLException ex) {</span>
+<span class="nc" id="L45">            System.out.println(ex);</span>
+<span class="nc" id="L46">        }</span>
+        
+<span class="nc" id="L48">        return water_reading;</span>
+    }
+    
+    public List&lt;Reading&gt; getReadingByMeterId(int meter_id){
+<span class="nc" id="L52">        List&lt;Reading&gt; list = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L53">        String sql = &quot;select * from Reading where meter_id = ?&quot;;</span>
+        try {
+<span class="nc" id="L55">            PreparedStatement ps = con.prepareStatement(sql);</span>
+<span class="nc" id="L56">            ps.setInt(1, meter_id);</span>
+<span class="nc" id="L57">            ResultSet rs = ps.executeQuery();</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">            while(rs.next()){</span>
+<span class="nc" id="L59">                Reading reading = new Reading();</span>
+<span class="nc" id="L60">                reading.setReading_id(rs.getInt(&quot;reading_id&quot;));</span>
+<span class="nc" id="L61">                reading.setMonth(rs.getInt(&quot;month&quot;));</span>
+<span class="nc" id="L62">                reading.setYear(rs.getInt(&quot;year&quot;));</span>
+<span class="nc" id="L63">                reading.setReading(rs.getInt(&quot;reading&quot;));</span>
+<span class="nc" id="L64">                reading.setCreated_date(rs.getDate(&quot;created_date&quot;));</span>
+<span class="nc" id="L65">                reading.setMeter_id(rs.getInt(&quot;meter_id&quot;));</span>
+<span class="nc" id="L66">                list.add(reading);</span>
+<span class="nc" id="L67">            }</span>
+<span class="nc" id="L68">        } catch (SQLException e) {</span>
+<span class="nc" id="L69">            e.printStackTrace();</span>
+<span class="nc" id="L70">        }</span>
+<span class="nc" id="L71">        return list;</span>
+    }
+    
+    public Reading getNearestReading(int meter_id){
+<span class="nc" id="L75">        String sql = &quot;select * from reading where meter_id = ? order by created_date desc limit 1&quot;;</span>
+<span class="nc" id="L76">        Reading read = null;</span>
+        try {
+<span class="nc" id="L78">            PreparedStatement ps = con.prepareStatement(sql);</span>
+<span class="nc" id="L79">            ps.setInt(1, meter_id);</span>
+<span class="nc" id="L80">            ResultSet rs = ps.executeQuery();</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">            if(rs.next()){</span>
+<span class="nc" id="L82">                read = new Reading();</span>
+<span class="nc" id="L83">                read.setMeter_id(rs.getInt(&quot;meter_id&quot;));</span>
+<span class="nc" id="L84">                read.setCreated_date(rs.getDate(&quot;created_date&quot;));</span>
+<span class="nc" id="L85">                read.setReading(rs.getInt(&quot;reading&quot;));</span>
+            }
+<span class="nc" id="L87">        } catch (SQLException e) {</span>
+<span class="nc" id="L88">            e.printStackTrace();</span>
+<span class="nc" id="L89">        }</span>
+<span class="nc" id="L90">        return read;</span>
+    }
+    
+     public int insertReading(Reading reading){
+<span class="nc" id="L94">        String sql = &quot;insert into reading(month, year, reading, created_date, meter_id) values(?, ?, ?, ?, ?);&quot;;</span>
+<span class="nc" id="L95">        int row = 0;</span>
+        try {
+<span class="nc" id="L97">            PreparedStatement ps = con.prepareStatement(sql);</span>
+<span class="nc" id="L98">            ps.setInt(1, reading.getMonth());</span>
+<span class="nc" id="L99">            ps.setInt(2, reading.getYear());</span>
+<span class="nc" id="L100">            ps.setInt(3, reading.getReading());</span>
+<span class="nc" id="L101">            java.sql.Date date = new java.sql.Date(reading.getCreated_date().getTime());</span>
+<span class="nc" id="L102">            ps.setDate(4, date);</span>
+<span class="nc" id="L103">            ps.setInt(5, reading.getMeter_id());</span>
+<span class="nc" id="L104">            row = ps.executeUpdate();</span>
+<span class="nc" id="L105">        } catch (SQLException e) {</span>
+<span class="nc" id="L106">            e.printStackTrace();</span>
+<span class="nc" id="L107">        }</span>
+<span class="nc" id="L108">        return row;</span>
+    }
+        
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

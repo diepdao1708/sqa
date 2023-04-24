@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>RateVipFrm.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;SQA&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">view.rate</a> &gt; <span class="el_source">RateVipFrm.java</span></div><h1>RateVipFrm.java</h1><pre class="source lang-java linenums">package view.rate;
+
+import controller.CustomerDAO;
+import controller.RateDAO;
+import java.awt.Color;
+import model.Customer;
+import model.Rate;
+import model.User;
+import view.bill.BillFrm;
+
+public class RateVipFrm extends javax.swing.JFrame {
+    private User user;
+    
+<span class="nc" id="L14">    CustomerDAO customerDAO = new CustomerDAO();</span>
+<span class="nc" id="L15">    RateDAO rateDAO = new RateDAO();</span>
+ 
+<span class="nc" id="L17">    public RateVipFrm(User user) {</span>
+<span class="nc" id="L18">        this.user = user;</span>
+<span class="nc" id="L19">        initComponents();</span>
+        
+<span class="nc" id="L21">        setTitle(&quot;Bảng Giá&quot;);</span>
+<span class="nc" id="L22">        setResizable(false);</span>
+<span class="nc" id="L23">        setSize(850, 550);</span>
+<span class="nc" id="L24">        setLocationRelativeTo(this);</span>
+<span class="nc" id="L25">        getContentPane().setBackground(Color.white);</span>
+        
+<span class="nc" id="L27">        Customer customer = customerDAO.customerInfo(user.getUser_id());</span>
+<span class="nc" id="L28">        Rate rate = rateDAO.rateInfo(customer.getRate_id());</span>
+        
+<span class="nc" id="L30">        jTextField1.setText(Integer.toString(rate.getPrice_first()));</span>
+<span class="nc" id="L31">        jTextField1.setHorizontalAlignment(jTextField1.RIGHT);</span>
+<span class="nc" id="L32">    }</span>
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L38">        jPanel1 = new javax.swing.JPanel();</span>
+<span class="nc" id="L39">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L40">        jLabel2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L41">        jTextField1 = new javax.swing.JTextField();</span>
+<span class="nc" id="L42">        backButton = new javax.swing.JButton();</span>
+
+<span class="nc" id="L44">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+
+<span class="nc" id="L46">        jPanel1.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L47">        jPanel1.setPreferredSize(new java.awt.Dimension(830, 500));</span>
+
+<span class="nc" id="L49">        jLabel1.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 36)); // NOI18N</span>
+<span class="nc" id="L50">        jLabel1.setText(&quot;Bảng giá&quot;);</span>
+
+<span class="nc" id="L52">        jLabel2.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L53">        jLabel2.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 18)); // NOI18N</span>
+<span class="nc" id="L54">        jLabel2.setText(&quot;Giá bán nước (đồng/m3):&quot;);</span>
+
+<span class="nc" id="L56">        jTextField1.setEditable(false);</span>
+<span class="nc" id="L57">        jTextField1.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L58">        jTextField1.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L59">        jTextField1.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L61">                jTextField1ActionPerformed(evt);</span>
+<span class="nc" id="L62">            }</span>
+        });
+
+<span class="nc" id="L65">        backButton.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L66">        backButton.setText(&quot;&lt;&quot;);</span>
+<span class="nc" id="L67">        backButton.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L69">                backButtonActionPerformed(evt);</span>
+<span class="nc" id="L70">            }</span>
+        });
+
+<span class="nc" id="L73">        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);</span>
+<span class="nc" id="L74">        jPanel1.setLayout(jPanel1Layout);</span>
+<span class="nc" id="L75">        jPanel1Layout.setHorizontalGroup(</span>
+<span class="nc" id="L76">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L77">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L78">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L79">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L80">                        .addContainerGap()</span>
+<span class="nc" id="L81">                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L82">                        .addGap(255, 255, 255)</span>
+<span class="nc" id="L83">                        .addComponent(jLabel1))</span>
+<span class="nc" id="L84">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L85">                        .addGap(135, 135, 135)</span>
+<span class="nc" id="L86">                        .addComponent(jLabel2)</span>
+<span class="nc" id="L87">                        .addGap(97, 97, 97)</span>
+<span class="nc" id="L88">                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
+<span class="nc" id="L89">                .addContainerGap(169, Short.MAX_VALUE))</span>
+        );
+<span class="nc" id="L91">        jPanel1Layout.setVerticalGroup(</span>
+<span class="nc" id="L92">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L93">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L94">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L95">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L96">                        .addContainerGap()</span>
+<span class="nc" id="L97">                        .addComponent(jLabel1))</span>
+<span class="nc" id="L98">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L99">                        .addGap(14, 14, 14)</span>
+<span class="nc" id="L100">                        .addComponent(backButton)))</span>
+<span class="nc" id="L101">                .addGap(141, 141, 141)</span>
+<span class="nc" id="L102">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L103">                    .addComponent(jLabel2)</span>
+<span class="nc" id="L104">                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L105">                .addContainerGap(275, Short.MAX_VALUE))</span>
+        );
+
+<span class="nc" id="L108">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L109">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L110">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L111">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L112">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L113">                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L114">                .addGap(0, 0, Short.MAX_VALUE))</span>
+        );
+<span class="nc" id="L116">        layout.setVerticalGroup(</span>
+<span class="nc" id="L117">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L118">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L119">                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L120">                .addGap(0, 0, Short.MAX_VALUE))</span>
+        );
+
+<span class="nc" id="L123">        pack();</span>
+<span class="nc" id="L124">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L128">    }//GEN-LAST:event_jTextField1ActionPerformed</span>
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+<span class="nc" id="L131">        (new BillFrm(user)).setVisible(true);</span>
+<span class="nc" id="L132">        this.dispose();</span>
+<span class="nc" id="L133">    }//GEN-LAST:event_backButtonActionPerformed</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
