@@ -3,27 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/view/rate/RateVipFrm.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/view/payment/PaymentFrm.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/view/updatewatch/UpdateMain.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/view/rate/RateFrm.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/controller/UserDAO.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/controller/DAO.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/view/register/RegisterFrm.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/view/login/LoginFrm.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/model/Payment.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/view/home/HomeFrm.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/controller/BillDAO.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/view/bill/BillFrm.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/view/qr/QR.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/model/Rate.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/controller/RateDAO.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/controller/RegisterData.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/controller/RegisterDAO.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/controller/LoginDAO.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/model/Meter.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/view/updatewatch/UpdateDetail.java</file>
-            <file>file:/E:/KI%20VIII/SQA/sqa/src/controller/ReadingDAO.java</file>
+            <file>file:/D:/Windows/Documents/sqa/test/controller/BillDAOTest.java</file>
+            <file>file:/D:/Windows/Documents/sqa/src/controller/RegisterDAO.java</file>
         </group>
     </open-files>
 </project-private>
