@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Rate.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;SQA&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">Rate.java</span></div><h1>Rate.java</h1><pre class="source lang-java linenums">package model;
+
+import java.util.Date;
+
+public class Rate {
+
+    private int rate_id;
+    private Date start_date;
+    private int price_first;
+    private int price_second;
+    private int price_third;
+    private int price_fourth;
+
+<span class="nc" id="L14">    public Rate(int rate_id, Date start_date, int price_first, int price_second, int price_third, int price_fourth) {</span>
+<span class="nc" id="L15">        this.rate_id = rate_id;</span>
+<span class="nc" id="L16">        this.start_date = start_date;</span>
+<span class="nc" id="L17">        this.price_first = price_first;</span>
+<span class="nc" id="L18">        this.price_second = price_second;</span>
+<span class="nc" id="L19">        this.price_third = price_third;</span>
+<span class="nc" id="L20">        this.price_fourth = price_fourth;</span>
+<span class="nc" id="L21">    }</span>
+
+    public int getRate_id() {
+<span class="nc" id="L24">        return rate_id;</span>
+    }
+
+    public Date getStart_date() {
+<span class="nc" id="L28">        return start_date;</span>
+    }
+
+    public int getPrice_first() {
+<span class="nc" id="L32">        return price_first;</span>
+    }
+
+    public int getPrice_second() {
+<span class="nc" id="L36">        return price_second;</span>
+    }
+
+    public int getPrice_third() {
+<span class="nc" id="L40">        return price_third;</span>
+    }
+
+    public int getPrice_fourth() {
+<span class="nc" id="L44">        return price_fourth;</span>
+    }
+
+    public void setRate_id(int rate_id) {
+<span class="nc" id="L48">        this.rate_id = rate_id;</span>
+<span class="nc" id="L49">    }</span>
+
+    public void setStart_date(Date start_date) {
+<span class="nc" id="L52">        this.start_date = start_date;</span>
+<span class="nc" id="L53">    }</span>
+
+    public void setPrice_first(int price_first) {
+<span class="nc" id="L56">        this.price_first = price_first;</span>
+<span class="nc" id="L57">    }</span>
+
+    public void setPrice_second(int price_second) {
+<span class="nc" id="L60">        this.price_second = price_second;</span>
+<span class="nc" id="L61">    }</span>
+
+    public void setPrice_third(int price_third) {
+<span class="nc" id="L64">        this.price_third = price_third;</span>
+<span class="nc" id="L65">    }</span>
+
+    public void setPrice_fourth(int price_fourth) {
+<span class="nc" id="L68">        this.price_fourth = price_fourth;</span>
+<span class="nc" id="L69">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

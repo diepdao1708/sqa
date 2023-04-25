@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Bill.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;SQA&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">Bill.java</span></div><h1>Bill.java</h1><pre class="source lang-java linenums">package model;
+
+public class Bill {
+    private int bill_id;
+    private int month;
+    private int year;
+    private int previous_reading;
+    private int current_reading;
+    private double amount;
+    private double total;
+    private boolean status;
+    private int customer_id;
+
+<span class="nc" id="L14">    public Bill(int bill_id, int month, int year, int previous_reading, int current_reading, double amount, double total, boolean status, int customer_id) {</span>
+<span class="nc" id="L15">        this.bill_id = bill_id;</span>
+<span class="nc" id="L16">        this.month = month;</span>
+<span class="nc" id="L17">        this.year = year;</span>
+<span class="nc" id="L18">        this.previous_reading = previous_reading;</span>
+<span class="nc" id="L19">        this.current_reading = current_reading;</span>
+<span class="nc" id="L20">        this.amount = amount;</span>
+<span class="nc" id="L21">        this.total = total;</span>
+<span class="nc" id="L22">        this.status = status;</span>
+<span class="nc" id="L23">        this.customer_id = customer_id;</span>
+<span class="nc" id="L24">    }</span>
+
+    public int getBill_id() {
+<span class="nc" id="L27">        return bill_id;</span>
+    }
+
+    public void setBill_id(int bill_id) {
+<span class="nc" id="L31">        this.bill_id = bill_id;</span>
+<span class="nc" id="L32">    }</span>
+
+    public int getMonth() {
+<span class="nc" id="L35">        return month;</span>
+    }
+
+    public void setMonth(int month) {
+<span class="nc" id="L39">        this.month = month;</span>
+<span class="nc" id="L40">    }</span>
+
+    public int getYear() {
+<span class="nc" id="L43">        return year;</span>
+    }
+
+    public void setYear(int year) {
+<span class="nc" id="L47">        this.year = year;</span>
+<span class="nc" id="L48">    }</span>
+
+    public int getPrevious_reading() {
+<span class="nc" id="L51">        return previous_reading;</span>
+    }
+
+    public void setPrevious_reading(int previous_reading) {
+<span class="nc" id="L55">        this.previous_reading = previous_reading;</span>
+<span class="nc" id="L56">    }</span>
+
+    public int getCurrent_reading() {
+<span class="nc" id="L59">        return current_reading;</span>
+    }
+
+    public void setCurrent_reading(int current_reading) {
+<span class="nc" id="L63">        this.current_reading = current_reading;</span>
+<span class="nc" id="L64">    }</span>
+
+    public double getAmount() {
+<span class="nc" id="L67">        return amount;</span>
+    }
+
+    public void setAmount(double amount) {
+<span class="nc" id="L71">        this.amount = amount;</span>
+<span class="nc" id="L72">    }</span>
+
+    public boolean isStatus() {
+<span class="nc" id="L75">        return status;</span>
+    }
+
+    public void setStatus(boolean status) {
+<span class="nc" id="L79">        this.status = status;</span>
+<span class="nc" id="L80">    }</span>
+
+    public double getTotal() {
+<span class="nc" id="L83">        return total;</span>
+    }
+
+    public void setTotal(double total) {
+<span class="nc" id="L87">        this.total = total;</span>
+<span class="nc" id="L88">    }</span>
+
+    public int getCustomer_id() {
+<span class="nc" id="L91">        return customer_id;</span>
+    }
+
+    public void setCustomer_id(int customer_id) {
+<span class="nc" id="L95">        this.customer_id = customer_id;</span>
+<span class="nc" id="L96">    }    </span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

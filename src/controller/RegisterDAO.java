@@ -23,9 +23,8 @@ public class RegisterDAO extends DAO {
             ps.executeUpdate();
             return new RegisterData(200, Const.register_sussess);
         } catch (SQLException e) {
-            System.out.println(e);
+            return new RegisterData(500, Const.register_failure);
         }
-        return new RegisterData(500, Const.register_failure);
     }
 
     public RegisterData register(String accountCode, String cccd, String password, String confirmPassword) {

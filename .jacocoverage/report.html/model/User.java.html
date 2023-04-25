@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>User.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;SQA&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">User.java</span></div><h1>User.java</h1><pre class="source lang-java linenums">package model;
+
+public class User {
+
+    private int user_id;
+    private String account_code;
+    private String password;
+    private String role;
+    private String name;
+    private String cccd;
+    private String address;
+    private String phone_number;
+    private String email;
+
+<span class="nc" id="L15">    public User() {</span>
+
+<span class="nc" id="L17">    }</span>
+
+<span class="nc" id="L19">    public User(int user_id, String account_code, String password, String role, String name, String cccd, String address, String phone_number, String email) {</span>
+<span class="nc" id="L20">        this.user_id = user_id;</span>
+<span class="nc" id="L21">        this.account_code = account_code;</span>
+<span class="nc" id="L22">        this.password = password;</span>
+<span class="nc" id="L23">        this.role = role;</span>
+<span class="nc" id="L24">        this.name = name;</span>
+<span class="nc" id="L25">        this.cccd = cccd;</span>
+<span class="nc" id="L26">        this.address = address;</span>
+<span class="nc" id="L27">        this.phone_number = phone_number;</span>
+<span class="nc" id="L28">        this.email = email;</span>
+<span class="nc" id="L29">    }</span>
+
+    public int getUser_id() {
+<span class="nc" id="L32">        return user_id;</span>
+    }
+
+    public void setUser_id(int user_id) {
+<span class="nc" id="L36">        this.user_id = user_id;</span>
+<span class="nc" id="L37">    }</span>
+
+    public String getAccount_code() {
+<span class="nc" id="L40">        return account_code;</span>
+    }
+
+    public void setAccount_code(String account_code) {
+<span class="nc" id="L44">        this.account_code = account_code;</span>
+<span class="nc" id="L45">    }</span>
+
+    public String getPassword() {
+<span class="nc" id="L48">        return password;</span>
+    }
+
+    public void setPassword(String password) {
+<span class="nc" id="L52">        this.password = password;</span>
+<span class="nc" id="L53">    }</span>
+
+    public String getRole() {
+<span class="nc" id="L56">        return role;</span>
+    }
+
+    public void setRole(String role) {
+<span class="nc" id="L60">        this.role = role;</span>
+<span class="nc" id="L61">    }</span>
+
+    public String getName() {
+<span class="nc" id="L64">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="nc" id="L68">        this.name = name;</span>
+<span class="nc" id="L69">    }</span>
+
+    public String getCccd() {
+<span class="nc" id="L72">        return cccd;</span>
+    }
+
+    public void setCccd(String cccd) {
+<span class="nc" id="L76">        this.cccd = cccd;</span>
+<span class="nc" id="L77">    }</span>
+
+    public String getAddress() {
+<span class="nc" id="L80">        return address;</span>
+    }
+
+    public void setAddress(String address) {
+<span class="nc" id="L84">        this.address = address;</span>
+<span class="nc" id="L85">    }</span>
+
+    public String getPhone_number() {
+<span class="nc" id="L88">        return phone_number;</span>
+    }
+
+    public void setPhone_number(String phone_number) {
+<span class="nc" id="L92">        this.phone_number = phone_number;</span>
+<span class="nc" id="L93">    }</span>
+
+    public String getEmail() {
+<span class="nc" id="L96">        return email;</span>
+    }
+
+    public void setEmail(String email) {
+<span class="nc" id="L100">        this.email = email;</span>
+<span class="nc" id="L101">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

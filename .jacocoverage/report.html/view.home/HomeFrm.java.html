@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>HomeFrm.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;SQA&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">view.home</a> &gt; <span class="el_source">HomeFrm.java</span></div><h1>HomeFrm.java</h1><pre class="source lang-java linenums">package view.home;
+
+import controller.BillDAO;
+import java.awt.Color;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import controller.CustomerDAO;
+import controller.MeterDAO;
+import controller.RateDAO;
+import controller.ReadingDAO;
+import model.Bill;
+import model.Customer;
+import model.Meter;
+import model.Rate;
+import model.Reading;
+import model.User;
+import view.bill.BillFrm;
+import view.login.LoginFrm;
+import view.payment.PaymentFrm;
+import view.updatewatch.UpdateMain;
+
+public class HomeFrm extends javax.swing.JFrame {
+    
+    private User user;
+    
+<span class="nc" id="L26">    CustomerDAO customerDAO = new CustomerDAO();</span>
+<span class="nc" id="L27">    MeterDAO meterDAO = new MeterDAO();</span>
+<span class="nc" id="L28">    ReadingDAO readingDAO = new ReadingDAO();</span>
+<span class="nc" id="L29">    RateDAO rateDAO = new RateDAO();</span>
+<span class="nc" id="L30">    BillDAO billDAO = new BillDAO();</span>
+    
+<span class="nc" id="L32">    public HomeFrm(User user) {</span>
+<span class="nc" id="L33">        this.user = user;</span>
+<span class="nc" id="L34">        initComponents();</span>
+        
+<span class="nc" id="L36">        setTitle(&quot;Trang Chủ&quot;);</span>
+<span class="nc" id="L37">        setResizable(false);</span>
+<span class="nc" id="L38">        setSize(850, 550);</span>
+<span class="nc" id="L39">        setLocationRelativeTo(this);</span>
+<span class="nc" id="L40">        getContentPane().setBackground(Color.white);</span>
+        
+<span class="nc" id="L42">        jLabel2.setText(&quot;Xin chào, &quot; + user.getName() + &quot;!&quot;);</span>
+<span class="nc" id="L43">        jLabel4.setText(&quot;Địa chỉ: &quot; + user.getAddress());</span>
+<span class="nc" id="L44">        jLabel5.setText(&quot;Số điện thoại: &quot; + user.getPhone_number());</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">        if (user.getRole().equals(&quot;kh&quot;)) {</span>
+<span class="nc" id="L46">            jLabel3.setText(&quot;Mã khách hàng: &quot; + user.getAccount_code());</span>
+<span class="nc" id="L47">            jButton1.setVisible(true);</span>
+<span class="nc" id="L48">            jButton2.setVisible(true);</span>
+<span class="nc" id="L49">            jButton3.setVisible(false);</span>
+        } else {
+<span class="nc" id="L51">            jLabel3.setText(&quot;Mã nhân viên: &quot; + user.getAccount_code());</span>
+<span class="nc" id="L52">            jButton1.setVisible(false);</span>
+<span class="nc" id="L53">            jButton2.setVisible(false);</span>
+<span class="nc" id="L54">            jButton3.setVisible(true);</span>
+        }
+<span class="nc" id="L56">    }</span>
+    
+<span class="nc" id="L58">    public HomeFrm() {</span>
+        
+<span class="nc" id="L60">    }</span>
+    
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L66">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L67">        jButton1 = new javax.swing.JButton();</span>
+<span class="nc" id="L68">        jButton2 = new javax.swing.JButton();</span>
+<span class="nc" id="L69">        jButton3 = new javax.swing.JButton();</span>
+<span class="nc" id="L70">        jButton4 = new javax.swing.JButton();</span>
+<span class="nc" id="L71">        jLabel2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L72">        jLabel3 = new javax.swing.JLabel();</span>
+<span class="nc" id="L73">        jLabel4 = new javax.swing.JLabel();</span>
+<span class="nc" id="L74">        jLabel5 = new javax.swing.JLabel();</span>
+
+<span class="nc" id="L76">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+
+<span class="nc" id="L78">        jLabel1.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L79">        jLabel1.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 36)); // NOI18N</span>
+<span class="nc" id="L80">        jLabel1.setText(&quot;Trang Chủ&quot;);</span>
+
+<span class="nc" id="L82">        jButton1.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L83">        jButton1.setText(&quot;Tính tiền nước&quot;);</span>
+<span class="nc" id="L84">        jButton1.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L86">                jButton1ActionPerformed(evt);</span>
+<span class="nc" id="L87">            }</span>
+        });
+
+<span class="nc" id="L90">        jButton2.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L91">        jButton2.setText(&quot;Thanh toán tiền nước&quot;);</span>
+<span class="nc" id="L92">        jButton2.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L94">                jButton2ActionPerformed(evt);</span>
+<span class="nc" id="L95">            }</span>
+        });
+
+<span class="nc" id="L98">        jButton3.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L99">        jButton3.setText(&quot;Cập nhật số nước &quot;);</span>
+<span class="nc" id="L100">        jButton3.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L102">                jButton3ActionPerformed(evt);</span>
+<span class="nc" id="L103">            }</span>
+        });
+
+<span class="nc" id="L106">        jButton4.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L107">        jButton4.setText(&quot; Đăng xuất&quot;);</span>
+<span class="nc" id="L108">        jButton4.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L110">                jButton4ActionPerformed(evt);</span>
+<span class="nc" id="L111">            }</span>
+        });
+
+<span class="nc" id="L114">        jLabel2.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 18)); // NOI18N</span>
+<span class="nc" id="L115">        jLabel2.setText(&quot;Xin chào, Đào Bích Diệp!&quot;);</span>
+
+<span class="nc" id="L117">        jLabel3.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 18)); // NOI18N</span>
+<span class="nc" id="L118">        jLabel3.setText(&quot;Mã khách hàng: KH01&quot;);</span>
+
+<span class="nc" id="L120">        jLabel4.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L121">        jLabel4.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 18)); // NOI18N</span>
+<span class="nc" id="L122">        jLabel4.setText(&quot;Địa chỉ: &quot;);</span>
+
+<span class="nc" id="L124">        jLabel5.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L125">        jLabel5.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 18)); // NOI18N</span>
+<span class="nc" id="L126">        jLabel5.setText(&quot;Số điện thoại: &quot;);</span>
+
+<span class="nc" id="L128">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L129">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L130">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L131">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L132">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L133">                .addGap(343, 343, 343)</span>
+<span class="nc" id="L134">                .addComponent(jLabel1)</span>
+<span class="nc" id="L135">                .addGap(0, 353, Short.MAX_VALUE))</span>
+<span class="nc" id="L136">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L137">                .addGap(165, 165, 165)</span>
+<span class="nc" id="L138">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L139">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L140">                        .addComponent(jButton2)</span>
+<span class="nc" id="L141">                        .addGap(0, 0, Short.MAX_VALUE))</span>
+<span class="nc" id="L142">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L143">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L144">                            .addComponent(jLabel4)</span>
+<span class="nc" id="L145">                            .addComponent(jLabel3)</span>
+<span class="nc" id="L146">                            .addComponent(jLabel2)</span>
+<span class="nc" id="L147">                            .addComponent(jLabel5))</span>
+<span class="nc" id="L148">                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+<span class="nc" id="L149">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L150">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L151">                            .addComponent(jButton3)</span>
+<span class="nc" id="L152">                            .addComponent(jButton1))</span>
+<span class="nc" id="L153">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L154">                        .addComponent(jButton4)</span>
+<span class="nc" id="L155">                        .addGap(168, 168, 168))))</span>
+        );
+<span class="nc" id="L157">        layout.setVerticalGroup(</span>
+<span class="nc" id="L158">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L159">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L160">                .addContainerGap()</span>
+<span class="nc" id="L161">                .addComponent(jLabel1)</span>
+<span class="nc" id="L162">                .addGap(58, 58, 58)</span>
+<span class="nc" id="L163">                .addComponent(jLabel2)</span>
+<span class="nc" id="L164">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L165">                .addComponent(jLabel3)</span>
+<span class="nc" id="L166">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L167">                .addComponent(jLabel4)</span>
+<span class="nc" id="L168">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L169">                .addComponent(jLabel5)</span>
+<span class="nc" id="L170">                .addGap(44, 44, 44)</span>
+<span class="nc" id="L171">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L172">                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L173">                        .addComponent(jButton3)</span>
+<span class="nc" id="L174">                        .addComponent(jButton4))</span>
+<span class="nc" id="L175">                    .addComponent(jButton1))</span>
+<span class="nc" id="L176">                .addGap(27, 27, 27)</span>
+<span class="nc" id="L177">                .addComponent(jButton2)</span>
+<span class="nc" id="L178">                .addContainerGap(106, Short.MAX_VALUE))</span>
+        );
+
+<span class="nc" id="L181">        pack();</span>
+<span class="nc" id="L182">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Lấy tháng - năm hiện tại
+<span class="nc" id="L186">        Date date = new Date(System.currentTimeMillis());</span>
+<span class="nc" id="L187">        String date_format = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).format(date);</span>
+<span class="nc" id="L188">        int month = Integer.parseInt(date_format.split(&quot;-&quot;)[1]);</span>
+<span class="nc" id="L189">        int year = Integer.parseInt(date_format.split(&quot;-&quot;)[0]);</span>
+
+        // Lấy thông tin 
+<span class="nc" id="L192">        Customer customer = customerDAO.customerInfo(1);</span>
+<span class="nc" id="L193">        Meter meter = meterDAO.meterInfo(customer.getCustomer_id());</span>
+<span class="nc" id="L194">        Reading reading = readingDAO.readingInfo(meter.getMeter_id(), month, year);</span>
+<span class="nc" id="L195">        Rate rate = rateDAO.rateInfo(customer.getRate_id());</span>
+<span class="nc" id="L196">        Bill bill = billDAO.billInfo(user.getUser_id(), month, year);</span>
+
+        //Lưu hóa đơn nếu cần
+<span class="nc bnc" id="L199" title="All 4 branches missed.">        if (reading != null &amp;&amp; bill == null) {</span>
+<span class="nc" id="L200">            Reading previous_reading = null;</span>
+<span class="nc bnc" id="L201" title="All 2 branches missed.">            if (month != 1) {</span>
+<span class="nc" id="L202">                previous_reading = readingDAO.readingInfo(meter.getMeter_id(), month - 1, year);</span>
+            } else {
+<span class="nc" id="L204">                previous_reading = readingDAO.readingInfo(meter.getMeter_id(), month - 1, year - 1);</span>
+            }
+<span class="nc" id="L206">            billDAO.saveBill(1, month, year, reading.getReading(), previous_reading.getReading(), customer.getType(), rate);</span>
+        }
+
+        //
+<span class="nc" id="L210">        BillFrm ttf = new BillFrm(user);</span>
+<span class="nc" id="L211">        ttf.setVisible(true);</span>
+<span class="nc" id="L212">        this.dispose();</span>
+<span class="nc" id="L213">    }//GEN-LAST:event_jButton1ActionPerformed</span>
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+<span class="nc" id="L216">        (new PaymentFrm()).setVisible(true);</span>
+<span class="nc" id="L217">        this.dispose();</span>
+<span class="nc" id="L218">    }//GEN-LAST:event_jButton2ActionPerformed</span>
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+<span class="nc" id="L221">        (new UpdateMain(user)).setVisible(true);</span>
+<span class="nc" id="L222">        this.dispose();</span>
+<span class="nc" id="L223">    }//GEN-LAST:event_jButton3ActionPerformed</span>
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+<span class="nc" id="L226">        (new LoginFrm()).setVisible(true);</span>
+<span class="nc" id="L227">        this.dispose();</span>
+<span class="nc" id="L228">    }//GEN-LAST:event_jButton4ActionPerformed</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
