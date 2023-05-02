@@ -189,7 +189,7 @@ public class HomeFrm extends javax.swing.JFrame {
         int year = Integer.parseInt(date_format.split("-")[0]);
 
         // Lấy thông tin 
-        Customer customer = customerDAO.customerInfo(1);
+        Customer customer = customerDAO.customerInfo(user.getUser_id());
         Meter meter = meterDAO.meterInfo(customer.getCustomer_id());
         Reading reading = readingDAO.readingInfo(meter.getMeter_id(), month, year);
         Rate rate = rateDAO.rateInfo(customer.getRate_id());

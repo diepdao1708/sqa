@@ -22,20 +22,20 @@ public class MeterDAO extends DAO {
         
     }
     
-    public Meter meterInfo(int meter_id) {
+    public Meter meterInfo(int customer_id) {
         Meter meter = null;
         
         try {
-            String query = "select * from meter where meter_id = ?";
+            String query = "select * from meter where user_id = ?";
             PreparedStatement statement = con.prepareStatement(query);
-            statement.setInt(1, meter_id);
+            statement.setInt(1, customer_id);
             ResultSet rs = statement.executeQuery();
 
             while(rs.next()) {
-                int customer = rs.getInt("user_id");
+                int meter_id = rs.getInt("meter_id");
                 String serial_number = rs.getString("serial_number");
                 boolean status = rs.getBoolean("status");
-                meter = new Meter(meter_id, customer, serial_number, status);
+                meter = new Meter(meter_id, customer_id, serial_number, status);
                 return meter;
             }
         } catch(SQLException ex) {

@@ -116,8 +116,8 @@ public class PaymentFrm extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Tổng Tiền");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/anh/Icon Gym Jframe/save.png")));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/anh/Icon Gym Jframe/save.png"))); // NOI18N
         jButton1.setText("Save");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

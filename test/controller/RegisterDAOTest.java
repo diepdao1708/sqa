@@ -18,7 +18,7 @@ public class RegisterDAOTest {
 
     @Before
     public void setUp() throws SQLException {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sqa?useSSL=false", "root", "password");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sqa", "root", "123456");
         connection.setAutoCommit(false);
         registerDAO = new RegisterDAO(connection);
 
