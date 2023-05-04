@@ -1,5 +1,6 @@
 package view.updatewatch;
 
+import controller.DAO;
 import controller.MeterDAO;
 import controller.UserDAO;
 import java.awt.Color;
@@ -30,9 +31,9 @@ public class UpdateMain extends javax.swing.JFrame {
     private void fillTable() {
         model = (DefaultTableModel) meterTable.getModel();
         model.setRowCount(0);
-        MeterDAO meterDAO = new MeterDAO();
+        MeterDAO meterDAO = new MeterDAO(DAO.con);
         List<Meter> list = meterDAO.getAllMeter();
-        UserDAO userDAO = new UserDAO();
+        UserDAO userDAO = new UserDAO(DAO.con);
         for (Meter meter : list) {
             User user = userDAO.getUserById(meter.getCustomer_id());
             model.addRow(new Object[]{user.getAccount_code(), user.getName(), user.getAddress(),
@@ -98,10 +99,10 @@ public class UpdateMain extends javax.swing.JFrame {
         });
         meterTable.setRowHeight(30);
         meterTable.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 meterTableAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -194,9 +195,9 @@ public class UpdateMain extends javax.swing.JFrame {
         } else {
             model = (DefaultTableModel) meterTable.getModel();
             model.setRowCount(0);
-            MeterDAO meterDAO = new MeterDAO();
+            MeterDAO meterDAO = new MeterDAO(DAO.con);
             List<Meter> list = meterDAO.getAllMeter();
-            UserDAO udao = new UserDAO();
+            UserDAO udao = new UserDAO(DAO.con);
             for (Meter meter : list) {
                 User user = udao.getUserById(meter.getCustomer_id());
                 if (user.getName().toLowerCase().trim().matches(".*" + text.toLowerCase() + ".*")) {

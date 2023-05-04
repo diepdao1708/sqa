@@ -5,6 +5,11 @@
 package controller;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import model.Reading;
 import org.junit.After;
@@ -26,52 +31,31 @@ public class ReadingDAOTest {
     public ReadingDAOTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
     @Before
-    public void setUp() {
+    public void setUp() throws SQLException {
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sqa", "root", "123456");
+        connection.setAutoCommit(false);
+        readingDAO = new ReadingDAO(connection);
     }
     
     @After
-    public void tearDown() {
+    public void tearDown() throws SQLException {
+        connection.rollback();
+        connection.close();
     }
 
     /**
      * Test of readingInfo method, of class ReadingDAO.
      */
-    @Test
-    public void testReadingInfo() {
-        System.out.println("readingInfo");
-        int meter_id = 0;
-        int month = 0;
-        int year = 0;
-        ReadingDAO instance = new ReadingDAO();
-        Reading expResult = null;
-        Reading result = instance.readingInfo(meter_id, month, year);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of getReadingByMeterId method, of class ReadingDAO.
      */
     @Test
     public void testGetReadingByMeterId() {
-        System.out.println("getReadingByMeterId");
-        int meter_id = 0;
-        ReadingDAO instance = new ReadingDAO();
-        List<Reading> expResult = null;
-        List<Reading> result = instance.getReadingByMeterId(meter_id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<Reading> list = readingDAO.getReadingByMeterId(3);
+        assertNotNull(list);
+        assertEquals(8, list.size());
     }
 
     /**
@@ -79,29 +63,34 @@ public class ReadingDAOTest {
      */
     @Test
     public void testGetNearestReading() {
-        System.out.println("getNearestReading");
-        int meter_id = 0;
-        ReadingDAO instance = new ReadingDAO();
-        Reading expResult = null;
-        Reading result = instance.getNearestReading(meter_id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Reading reading = readingDAO.getNearestReading(3);
+        assertNotNull(reading);
+        SimpleDateFormat formanter = new SimpleDateFormat("yyyy-MM-dd");
+        assertEquals(10, reading.getReading_id());
+        assertEquals(6, reading.getMonth());
+        assertEquals(2023, reading.getYear());
+        assertEquals(700, reading.getReading());
+        assertEquals("2023-06-23", formanter.format(reading.getCreated_date()));
+        assertEquals(3, reading.getMeter_id());
     }
 
     /**
      * Test of insertReading method, of class ReadingDAO.
      */
     @Test
-    public void testInsertReading() {
-        System.out.println("insertReading");
-        Reading reading = null;
-        ReadingDAO instance = new ReadingDAO();
-        int expResult = 0;
-        int result = instance.insertReading(reading);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testInsertReading() throws SQLException {
+        Reading reading = new Reading();
+        Calendar calendar = Calendar.getInstance();
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        Date create_day = new Date();
+        reading.setMonth(month);
+        reading.setYear(year);
+        reading.setCreated_date(create_day);
+        reading.setMeter_id(3);
+        reading.setReading(100);
+        int i = readingDAO.insertReading(reading);
+        assertEquals(1, i);
     }
     
 }

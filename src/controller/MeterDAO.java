@@ -4,6 +4,7 @@
  */
 package controller;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,16 +19,18 @@ import model.User;
  */
 
 public class MeterDAO extends DAO {
-    public MeterDAO() {
-        
+    
+    private Connection connection;
+    
+    public MeterDAO(Connection connection){
+        this.connection = connection;
     }
     
     public Meter meterInfo(int customer_id) {
-        Meter meter = null;
-        
+        Meter meter = null; 
         try {
             String query = "select * from meter where user_id = ?";
-            PreparedStatement statement = con.prepareStatement(query);
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, customer_id);
             ResultSet rs = statement.executeQuery();
 
@@ -48,7 +51,7 @@ public class MeterDAO extends DAO {
         List<Meter> list = new ArrayList();
         String sql = "select * from meter";
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 Meter meter = new Meter();

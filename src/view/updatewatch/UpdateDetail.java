@@ -1,5 +1,6 @@
 package view.updatewatch;
 
+import controller.DAO;
 import controller.MeterDAO;
 import controller.ReadingDAO;
 import controller.UserDAO;
@@ -43,17 +44,17 @@ public class UpdateDetail extends javax.swing.JFrame {
     }
 
     private void fillInfo(int meter_id, int customer_id) {
-        UserDAO userDAO = new UserDAO();
+        UserDAO userDAO = new UserDAO(DAO.con);
         User user = userDAO.getUserById(customer_id);
-        MeterDAO meterDAO = new MeterDAO();
-        Meter meter = meterDAO.meterInfo(meter_id);
+        MeterDAO meterDAO = new MeterDAO(DAO.con);
+        Meter meter = meterDAO.meterInfo(customer_id);
         customerName.setText(user.getName());
         meterId.setText(meter.getSerial_number());
         this.id.setText(meter_id + "");
     }
 
     private void fillTable(int meter_id) {
-        ReadingDAO readingDAO = new ReadingDAO();
+        ReadingDAO readingDAO = new ReadingDAO(DAO.con);
         List<Reading> list = readingDAO.getReadingByMeterId(meter_id);
         model = (DefaultTableModel) readingTable.getModel();
         SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
@@ -253,10 +254,10 @@ public class UpdateDetail extends javax.swing.JFrame {
     }//GEN-LAST:event_updateBTNActionPerformed
 
     private void updateBTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBTNMouseClicked
-         model = (DefaultTableModel) readingTable.getModel();
+        model = (DefaultTableModel) readingTable.getModel();
         Date dateUpdate = this.dateUpdate.getDate();
         int meter_id = Integer.parseInt(id.getText());
-        ReadingDAO rdao = new ReadingDAO();
+        ReadingDAO rdao = new ReadingDAO(DAO.con);
         Reading readingNearest = rdao.getNearestReading(meter_id);
         String readingUpdate_raw = numReading.getText();
         int readingUpdate;
@@ -299,7 +300,7 @@ public class UpdateDetail extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private int check(Reading nearestReading, Reading nowReading) {
+    public int check(Reading nearestReading, Reading nowReading) {
         if(nearestReading==null){
             return 0;
         }

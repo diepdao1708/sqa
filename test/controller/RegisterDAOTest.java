@@ -21,7 +21,7 @@ public class RegisterDAOTest {
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sqa", "root", "123456");
         connection.setAutoCommit(false);
         registerDAO = new RegisterDAO(connection);
-
+        
     }
 
     @After

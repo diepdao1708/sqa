@@ -4,6 +4,7 @@
  */
 package controller;
 
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,8 +21,12 @@ import model.Reading;
  */
 
 public class ReadingDAO extends DAO {
-    public ReadingDAO() {
-        
+    
+    private Connection connection;
+    
+    
+    public ReadingDAO(Connection connection){
+        this.connection = connection;
     }
     
     public Reading readingInfo(int meter_id, int month, int year) {
@@ -29,7 +34,7 @@ public class ReadingDAO extends DAO {
         
         try {
             String query = "select * from reading where meter_id = ? and month = ? and year = ?";
-            PreparedStatement statement = con.prepareStatement(query);
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, meter_id);
             statement.setInt(2, month);
             statement.setInt(3, year);
@@ -52,7 +57,7 @@ public class ReadingDAO extends DAO {
         List<Reading> list = new ArrayList<>();
         String sql = "select * from Reading where meter_id = ?";
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, meter_id);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
@@ -75,11 +80,14 @@ public class ReadingDAO extends DAO {
         String sql = "select * from reading where meter_id = ? order by created_date desc limit 1";
         Reading read = null;
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, meter_id);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 read = new Reading();
+                read.setReading_id(rs.getInt("reading_id"));
+                read.setMonth(rs.getInt("month"));
+                read.setYear(rs.getInt("year"));
                 read.setMeter_id(rs.getInt("meter_id"));
                 read.setCreated_date(rs.getDate("created_date"));
                 read.setReading(rs.getInt("reading"));
@@ -90,11 +98,11 @@ public class ReadingDAO extends DAO {
         return read;
     }
     
-     public int insertReading(Reading reading){
+    public int insertReading(Reading reading){
         String sql = "insert into reading(month, year, reading, created_date, meter_id) values(?, ?, ?, ?, ?);";
         int row = 0;
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, reading.getMonth());
             ps.setInt(2, reading.getYear());
             ps.setInt(3, reading.getReading());

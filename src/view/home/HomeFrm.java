@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import controller.CustomerDAO;
+import controller.DAO;
 import controller.MeterDAO;
 import controller.RateDAO;
 import controller.ReadingDAO;
@@ -24,8 +25,8 @@ public class HomeFrm extends javax.swing.JFrame {
     private User user;
     
     CustomerDAO customerDAO = new CustomerDAO();
-    MeterDAO meterDAO = new MeterDAO();
-    ReadingDAO readingDAO = new ReadingDAO();
+    MeterDAO meterDAO = new MeterDAO(DAO.con);
+    ReadingDAO readingDAO = new ReadingDAO(DAO.con);
     RateDAO rateDAO = new RateDAO();
     BillDAO billDAO = new BillDAO();
     
