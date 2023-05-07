@@ -204,7 +204,7 @@ public class HomeFrm extends javax.swing.JFrame {
             } else {
                 previous_reading = readingDAO.readingInfo(meter.getMeter_id(), month - 1, year - 1);
             }
-            billDAO.saveBill(1, month, year, reading.getReading(), previous_reading.getReading(), customer.getType(), rate);
+            billDAO.saveBill(user.getUser_id(), month, year, reading.getReading(), previous_reading.getReading(), customer.getType(), rate);
         }
 
         //

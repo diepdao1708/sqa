@@ -87,8 +87,8 @@ public class BillDAO extends DAO {
                 int bill_id = rs.getInt("bill_id");
                 int previous_reading = rs.getInt("previous_reading");
                 int current_reading = rs.getInt("current_reading");
-                double amount = rs.getDouble("amount");
-                double total = rs.getDouble("total");
+                int amount = rs.getInt("amount");
+                int total = rs.getInt("total");
                 boolean status = rs.getBoolean("status");
 
                 bill = new Bill(bill_id, month, year, previous_reading, current_reading, amount, total, status, customer_id);
@@ -102,8 +102,10 @@ public class BillDAO extends DAO {
 
     public boolean saveBill(int customer_id, int month, int year, int current_reading, int previous_reading, String type, Rate rate) {
         BillDAO billDAO = new BillDAO();
-        double amount = (double) billDAO.calculateBill(type, previous_reading, current_reading, rate);
-        double total = Math.round(amount * 1.08 * 1000.0) / 1000.0;
+        int amount = billDAO.calculateBill(type, previous_reading, current_reading, rate);
+        int tax = (int) Math.round(amount * 0.08);
+        int enviroment = (int) Math.round(amount * 0.1);
+        int total = amount + tax + enviroment;
         try {
             String query = "insert into bill (month, year, previous_reading, current_reading, amount, total, status, customer_id)"
                     + "values (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -112,8 +114,8 @@ public class BillDAO extends DAO {
             statement.setInt(2, year);
             statement.setInt(3, previous_reading);
             statement.setInt(4, current_reading);
-            statement.setDouble(5, amount);
-            statement.setDouble(6, total);
+            statement.setInt(5, amount);
+            statement.setInt(6, total);
             statement.setBoolean(7, false);
             statement.setInt(8, customer_id);
 
