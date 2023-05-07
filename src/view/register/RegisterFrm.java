@@ -1,17 +1,26 @@
 package view.register;
 
 import controller.Const;
-import controller.DAO;
 import controller.RegisterDAO;
 import controller.RegisterData;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import view.login.LoginFrm;
 
 public class RegisterFrm extends javax.swing.JFrame {
 
+    public Connection con;
+
     public RegisterFrm() {
         initComponents();
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sqa", "root", "password");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
 
         setTitle("Đăng Ký");
         setResizable(false);
@@ -164,7 +173,7 @@ public class RegisterFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        RegisterDAO registerDAO = new RegisterDAO(DAO.con);
+        RegisterDAO registerDAO = new RegisterDAO(con);
         String accountCode = accountCodeEditText.getText().trim();
         String password = new String(passwordEditText.getPassword());
         String confirmPassword = new String(confirmPasswordEditText.getPassword());
@@ -178,13 +187,13 @@ public class RegisterFrm extends javax.swing.JFrame {
             this.dispose();
         } else {
             if (registerData.getMessage().equals(Const.account_code_empty)
-                || registerData.getMessage().equals(Const.exist_account)
-                || registerData.getMessage().equals(Const.register_failure)
-                || registerData.getMessage().equals(Const.not_exist_customer_code)) {
+                    || registerData.getMessage().equals(Const.exist_account)
+                    || registerData.getMessage().equals(Const.register_failure)
+                    || registerData.getMessage().equals(Const.not_exist_customer_code)) {
                 accountCodeEditText.requestFocus();
             }
             if (registerData.getMessage().equals(Const.password_empty)
-                || registerData.getMessage().equals(Const.password_not_matching)) {
+                    || registerData.getMessage().equals(Const.password_not_matching)) {
                 passwordEditText.requestFocus();
             }
             if (registerData.getMessage().equals(Const.confirm_password_empty)) {
