@@ -102,8 +102,10 @@ public class BillDAO extends DAO {
 
     public boolean saveBill(int customer_id, int month, int year, int current_reading, int previous_reading, String type, Rate rate) {
         BillDAO billDAO = new BillDAO();
-        double amount = (double) billDAO.calculateBill(type, previous_reading, current_reading, rate);
-        double total = Math.round(amount * 1.08 * 1000.0) / 1000.0;
+        int amount = billDAO.calculateBill(type, previous_reading, current_reading, rate);
+        int tax = (int) Math.round(amount * 0.08);
+        int enviroment = (int) Math.round(amount * 0.1);
+        int total = amount + tax + enviroment;
         try {
             String query = "insert into bill (month, year, previous_reading, current_reading, amount, total, status, customer_id)"
                     + "values (?, ?, ?, ?, ?, ?, ?, ?)";

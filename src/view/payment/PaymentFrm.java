@@ -347,21 +347,13 @@ public class PaymentFrm extends javax.swing.JFrame {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             // set the values for the placeholders in the SQL statement
             pstmt.setInt(1, 1);
-            pstmt.setString(2, cid);
+            pstmt.setInt(2, Integer.parseInt(cid));
             int rowsUpdated = pstmt.executeUpdate();
             pstmt.close();
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(PaymentFrm.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PaymentFrm().setVisible(true);
-            }
-        });
     }
     // Variables declaration - do not modify
     private javax.swing.JButton jButton1;

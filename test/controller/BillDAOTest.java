@@ -4,13 +4,13 @@
  */
 package controller;
 
+import static junit.framework.TestCase.assertEquals;
 import model.Rate;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *

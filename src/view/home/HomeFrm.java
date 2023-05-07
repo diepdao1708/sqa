@@ -182,20 +182,20 @@ public class HomeFrm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Lấy tháng - năm hiện tại
+        // Lấy tháng - năm hiện tại
         Date date = new Date(System.currentTimeMillis());
         String date_format = new SimpleDateFormat("yyyy-MM-dd").format(date);
         int month = Integer.parseInt(date_format.split("-")[1]);
         int year = Integer.parseInt(date_format.split("-")[0]);
 
         // Lấy thông tin 
-        Customer customer = customerDAO.customerInfo(1);
+        Customer customer = customerDAO.customerInfo(user.getUser_id());
         Meter meter = meterDAO.meterInfo(customer.getCustomer_id());
         Reading reading = readingDAO.readingInfo(meter.getMeter_id(), month, year);
         Rate rate = rateDAO.rateInfo(customer.getRate_id());
         Bill bill = billDAO.billInfo(user.getUser_id(), month, year);
 
-        //Lưu hóa đơn nếu cần
+        // Lưu hóa đơn nếu cần
         if (reading != null && bill == null) {
             Reading previous_reading = null;
             if (month != 1) {
@@ -203,7 +203,7 @@ public class HomeFrm extends javax.swing.JFrame {
             } else {
                 previous_reading = readingDAO.readingInfo(meter.getMeter_id(), month - 1, year - 1);
             }
-            billDAO.saveBill(1, month, year, reading.getReading(), previous_reading.getReading(), customer.getType(), rate);
+            billDAO.saveBill(user.getUser_id(), month, year, reading.getReading(), previous_reading.getReading(), customer.getType(), rate);
         }
 
         //

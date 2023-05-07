@@ -65,6 +65,7 @@ public class LoginFrm extends javax.swing.JFrame {
         passwordEditText.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         accountCodeEditText.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        accountCodeEditText.setText("nqc1234");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
