@@ -3,6 +3,8 @@ package view.rate;
 import controller.CustomerDAO;
 import controller.RateDAO;
 import java.awt.Color;
+import java.text.NumberFormat;
+import java.util.Locale;
 import model.Customer;
 import model.Rate;
 import model.User;
@@ -10,6 +12,9 @@ import view.bill.BillFrm;
 
 public class RateFrm extends javax.swing.JFrame {
     private User user;
+    
+    Locale localeVN = new Locale("vi", "VN");
+    NumberFormat VN = NumberFormat.getInstance(localeVN);
     
     CustomerDAO customerDAO = new CustomerDAO();
     RateDAO rateDAO = new RateDAO();
@@ -27,16 +32,16 @@ public class RateFrm extends javax.swing.JFrame {
         Customer customer = customerDAO.customerInfo(user.getUser_id());
         Rate rate = rateDAO.rateInfo(customer.getRate_id());
         
-        jTextField1.setText(Integer.toString(rate.getPrice_first()));
+        jTextField1.setText(VN.format(rate.getPrice_first()));
         jTextField1.setHorizontalAlignment(jTextField1.RIGHT);
         
-        jTextField2.setText(Integer.toString(rate.getPrice_second()));
+        jTextField2.setText(VN.format(rate.getPrice_second()));
         jTextField2.setHorizontalAlignment(jTextField1.RIGHT);
         
-        jTextField3.setText(Integer.toString(rate.getPrice_third()));
+        jTextField3.setText(VN.format(rate.getPrice_third()));
         jTextField3.setHorizontalAlignment(jTextField1.RIGHT);
         
-        jTextField4.setText(Integer.toString(rate.getPrice_fourth()));
+        jTextField4.setText(VN.format(rate.getPrice_fourth()));
         jTextField4.setHorizontalAlignment(jTextField1.RIGHT);
     }
 
