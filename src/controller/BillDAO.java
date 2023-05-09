@@ -15,6 +15,9 @@ public class BillDAO extends DAO {
     public int calculateBill(String type, int current_reading, Rate rate) {
         int res;
         int change = current_reading;
+        
+        if (change < 0)
+            return -1;
 
         if (type.equals("normal")) {
             // Với 10m3 đầu
@@ -45,6 +48,9 @@ public class BillDAO extends DAO {
     public int calculateBill(String type, int previous_reading, int current_reading, Rate rate) {
         int res;
         int change = current_reading - previous_reading;
+        
+        if (change < 0)
+            return -1;
 
         if (type.equals("normal")) {
             // Với 10m3 đầu
