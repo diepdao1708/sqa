@@ -29,7 +29,7 @@ public class MeterDAO extends DAO {
     public Meter meterInfo(int customer_id) {
         Meter meter = null; 
         try {
-            String query = "select * from meter where user_id = ?";
+            String query = "select * from meter where customer_id = ?";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, customer_id);
             ResultSet rs = statement.executeQuery();

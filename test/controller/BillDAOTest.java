@@ -4,10 +4,14 @@
  */
 package controller;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import static junit.framework.TestCase.assertEquals;
 import model.Bill;
 import model.Rate;
 import static org.junit.Assert.assertNotNull;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -16,7 +20,7 @@ import org.junit.Test;
  */
 public class BillDAOTest {
     
-    BillDAO billDAO;
+    BillDAO billDAO = new BillDAO();
     
     public BillDAOTest() {
     }
@@ -52,6 +56,20 @@ public class BillDAOTest {
     public void billInfoTest() {
         Bill bill = billDAO.billInfo(1, 4, 2023);
         assertNotNull(bill);
+        assertEquals(4, bill.getBill_id());
+        assertEquals(4, bill.getMonth());
+        assertEquals(2023, bill.getYear());
+        assertEquals(1, bill.getCustomer_id());
     }
     
+    @Test
+    public void saveBillTest() {
+        
+    }
+    
+    @Test
+    public void numbersBillTest() {
+        int num = billDAO.numbersBill(1);
+        assertEquals(4, num);
+    }
 }
